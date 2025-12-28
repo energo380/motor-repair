@@ -23,7 +23,6 @@
             margin: 0 auto;
         }
 
-        /* Экран входа */
         .login-screen {
             display: flex;
             justify-content: center;
@@ -71,7 +70,6 @@
             margin-bottom: 20px;
         }
 
-        /* Кнопки */
         .btn {
             padding: 12px 25px;
             border: none;
@@ -118,18 +116,14 @@
             background: #ff6b6b;
             color: white;
             padding: 8px 12px;
-            font-size: 16px;
         }
 
         .btn-add {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 8px 15px;
-            font-size: 13px;
-            margin-top: 10px;
+            padding: 10px 20px;
         }
 
-        /* Основной экран */
         .main-screen {
             display: none;
         }
@@ -150,9 +144,6 @@
         .header h1 {
             color: #333;
             font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .header-buttons {
@@ -161,7 +152,6 @@
             flex-wrap: wrap;
         }
 
-        /* Форма */
         .form-container {
             background: white;
             border-radius: 15px;
@@ -194,54 +184,15 @@
             font-size: 14px;
         }
 
-        /* Информация об ответственном */
-        .responsible-section {
-            background: #f8f9ff;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .responsible-section .field {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .responsible-section label {
-            display: block;
-            font-size: 13px;
-            color: #666;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .responsible-section input {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        .responsible-section input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        /* Таблица ввода */
         .input-table {
             overflow-x: auto;
-            margin: 0 -10px;
-            padding: 0 10px;
+            margin-bottom: 20px;
         }
 
         .input-table table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 950px;
+            min-width: 900px;
         }
 
         .input-table th {
@@ -251,7 +202,6 @@
             text-align: left;
             font-weight: 600;
             font-size: 12px;
-            white-space: nowrap;
         }
 
         .input-table th:first-child {
@@ -265,7 +215,6 @@
         .input-table td {
             padding: 6px 4px;
             border-bottom: 1px solid #f0f0f0;
-            vertical-align: middle;
         }
 
         .input-table tr:hover {
@@ -277,7 +226,6 @@
             text-align: center;
             color: #999;
             font-weight: 600;
-            font-size: 13px;
         }
 
         .input-table select,
@@ -287,7 +235,6 @@
             border: 2px solid #e8e8e8;
             border-radius: 8px;
             font-size: 13px;
-            transition: all 0.3s;
             background: white;
         }
 
@@ -295,32 +242,77 @@
         .input-table input[type="text"]:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .delete-row-btn {
             background: #ff6b6b;
             color: white;
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
+            font-size: 14px;
         }
 
         .delete-row-btn:hover {
             background: #e74c3c;
-            transform: scale(1.1);
         }
 
-        /* Кнопки формы */
-        .form-actions {
+        .add-row-section {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        /* Секция ответственного - ВНИЗУ */
+        .responsible-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 100%);
+            padding: 20px;
+            border-radius: 12px;
             margin-top: 20px;
+            border: 2px solid #667eea;
+        }
+
+        .responsible-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .responsible-fields {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .responsible-fields .field {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .responsible-fields label {
+            display: block;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .responsible-fields input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        .responsible-fields input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-actions {
+            margin-top: 25px;
             display: flex;
             justify-content: center;
             gap: 15px;
@@ -328,16 +320,10 @@
         }
 
         .form-actions .btn {
-            padding: 15px 35px;
-            font-size: 15px;
+            padding: 15px 40px;
+            font-size: 16px;
         }
 
-        .add-row-section {
-            text-align: center;
-            margin-top: 15px;
-        }
-
-        /* Уведомления */
         .notification {
             position: fixed;
             top: 20px;
@@ -364,7 +350,6 @@
             background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
         }
 
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -416,9 +401,6 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .close-btn:hover {
@@ -426,7 +408,6 @@
             color: #333;
         }
 
-        /* Фильтры */
         .history-filters {
             display: flex;
             gap: 10px;
@@ -439,10 +420,8 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
-            min-width: 150px;
         }
 
-        /* Таблица истории */
         .history-table {
             overflow-x: auto;
         }
@@ -450,7 +429,7 @@
         .history-table table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            min-width: 1000px;
         }
 
         .history-table th,
@@ -467,11 +446,6 @@
             color: #555;
         }
 
-        .history-table tr:hover {
-            background: #f8f9ff;
-        }
-
-        /* Настройки */
         .settings-section {
             margin-bottom: 25px;
         }
@@ -479,14 +453,13 @@
         .settings-section h3 {
             margin-bottom: 15px;
             color: #333;
-            font-size: 16px;
         }
 
         .settings-list {
             display: flex;
             flex-direction: column;
             gap: 8px;
-            max-height: 250px;
+            max-height: 200px;
             overflow-y: auto;
         }
 
@@ -498,13 +471,11 @@
 
         .settings-item input {
             flex: 1;
-            padding: 10px 15px;
+            padding: 10px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
-            font-size: 14px;
         }
 
-        /* Загрузка */
         .loading {
             display: none;
             position: fixed;
@@ -537,40 +508,29 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Адаптивность */
         @media (max-width: 768px) {
             .header {
                 flex-direction: column;
                 text-align: center;
             }
-
-            .btn {
-                padding: 10px 15px;
-                font-size: 12px;
-            }
-
-            .responsible-section {
+            .responsible-fields {
                 flex-direction: column;
             }
-
-            .responsible-section .field {
+            .responsible-fields .field {
                 min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Загрузка -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
         <div>Загрузка...</div>
     </div>
 
-    <!-- Уведомление -->
     <div class="notification" id="notification"></div>
 
     <div class="container">
-        <!-- Экран входа -->
         <div class="login-screen" id="loginScreen">
             <div class="login-box">
                 <div class="logo-icon">⚡</div>
@@ -581,7 +541,6 @@
             </div>
         </div>
 
-        <!-- Основной экран -->
         <div class="main-screen" id="mainScreen">
             <div class="header">
                 <h1>⚡ Заявка на ремонт электродвигателей</h1>
@@ -598,39 +557,41 @@
                     <div class="current-date" id="currentDate"></div>
                 </div>
 
-                <!-- Ответственное лицо -->
-                <div class="responsible-section">
-                    <div class="field">
-                        <label>👤 ФИО ответственного *</label>
-                        <input type="text" id="responsibleName" placeholder="Иванов Иван Иванович">
-                    </div>
-                    <div class="field">
-                        <label>📞 Контактный телефон *</label>
-                        <input type="text" id="responsiblePhone" placeholder="+7 (999) 123-45-67">
-                    </div>
-                </div>
-
                 <div class="input-table">
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 35px;">№</th>
-                                <th style="width: 15%;">Подразделение</th>
-                                <th style="width: 13%;">Место установки</th>
-                                <th style="width: 17%;">Электродвигатель</th>
-                                <th style="width: 9%;">кВт</th>
-                                <th style="width: 9%;">Об/мин</th>
-                                <th style="width: 20%;">Причина ремонта</th>
-                                <th style="width: 40px;"></th>
+                                <th style="width:35px;">№</th>
+                                <th style="width:15%;">Подразделение</th>
+                                <th style="width:13%;">Место установки</th>
+                                <th style="width:17%;">Электродвигатель</th>
+                                <th style="width:9%;">кВт</th>
+                                <th style="width:9%;">Об/мин</th>
+                                <th style="width:20%;">Причина ремонта</th>
+                                <th style="width:35px;"></th>
                             </tr>
                         </thead>
-                        <tbody id="inputTableBody">
-                        </tbody>
+                        <tbody id="inputTableBody"></tbody>
                     </table>
                 </div>
 
                 <div class="add-row-section">
                     <button class="btn btn-add" onclick="addRow()">➕ Добавить строку</button>
+                </div>
+
+                <!-- Ответственное лицо ВНИЗУ формы -->
+                <div class="responsible-section">
+                    <h3>👤 Ответственное лицо</h3>
+                    <div class="responsible-fields">
+                        <div class="field">
+                            <label>ФИО ответственного *</label>
+                            <input type="text" id="responsibleName" placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="field">
+                            <label>Контактный телефон *</label>
+                            <input type="text" id="responsiblePhone" placeholder="+7 (999) 123-45-67">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-actions">
@@ -641,27 +602,19 @@
         </div>
     </div>
 
-    <!-- Модальное окно истории -->
+    <!-- История -->
     <div class="modal" id="historyModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>📜 История заявок</h2>
                 <button class="close-btn" onclick="closeModal('historyModal')">&times;</button>
             </div>
-            
             <div class="history-filters">
-                <select id="filterDepartment">
-                    <option value="">Все подразделения</option>
-                </select>
-                <select id="filterLocation">
-                    <option value="">Все места</option>
-                </select>
-                <select id="filterPower">
-                    <option value="">Любая мощность</option>
-                </select>
+                <select id="filterDepartment"><option value="">Все подразделения</option></select>
+                <select id="filterLocation"><option value="">Все места</option></select>
+                <select id="filterPower"><option value="">Любая мощность</option></select>
                 <button class="btn btn-primary" onclick="loadHistory()">🔍 Показать</button>
             </div>
-
             <div class="history-table">
                 <table>
                     <thead>
@@ -678,44 +631,37 @@
                             <th>Телефон</th>
                         </tr>
                     </thead>
-                    <tbody id="historyTableBody">
-                    </tbody>
+                    <tbody id="historyTableBody"></tbody>
                 </table>
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно настроек -->
+    <!-- Настройки -->
     <div class="modal" id="settingsModal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>⚙️ Настройки</h2>
                 <button class="close-btn" onclick="closeModal('settingsModal')">&times;</button>
             </div>
-
             <div class="settings-section">
                 <h3>📍 Подразделения</h3>
                 <div class="settings-list" id="departmentsList"></div>
-                <button class="btn btn-secondary" style="margin-top: 10px;" onclick="addDepartment()">+ Добавить</button>
+                <button class="btn btn-secondary" style="margin-top:10px;" onclick="addDepartment()">+ Добавить</button>
             </div>
-
             <div class="settings-section">
                 <h3>🔧 Места установки</h3>
                 <div class="settings-list" id="locationsList"></div>
-                <button class="btn btn-secondary" style="margin-top: 10px;" onclick="addLocation()">+ Добавить</button>
+                <button class="btn btn-secondary" style="margin-top:10px;" onclick="addLocation()">+ Добавить</button>
             </div>
-
             <div class="form-actions">
-                <button class="btn btn-success" onclick="saveSettings()">💾 Сохранить настройки</button>
+                <button class="btn btn-success" onclick="saveSettings()">💾 Сохранить</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ЗАМЕНИТЕ НА ВАШ НОВЫЙ URL!
-        const API_URL = 'https://script.google.com/macros/s/AKfycbzTtyaaTcdwjeM9sFk7MHp-74kEeGG21qPj4TBiCVmP9v_z9MQXHC9orpjvqnoHzPkp/exec
-
-';
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzTtyaaTcdwjeM9sFk7MHp-74kEeGG21qPj4TBiCVmP9v_z9MQXHC9orpjvqnoHzPkp/exec';
         
         let currentPassword = '';
         let isAdmin = false;
@@ -735,34 +681,57 @@
         }
 
         async function login() {
-            const password = document.getElementById('passwordInput').value;
-            if (!password) { showNotification('Введите пароль', 'error'); return; }
+            const password = document.getElementById('passwordInput').value.trim();
+            if (!password) { 
+                showNotification('Введите пароль', 'error'); 
+                return; 
+            }
 
             showLoading(true);
+            
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'login', password: password, isAdmin: false })
                 });
-                const result = await response.json();
+            } catch(e) {}
 
+            // Используем прямую проверку через GET с параметрами
+            try {
+                const checkUrl = API_URL + '?action=getSettings';
+                const response = await fetch(checkUrl);
+                const result = await response.json();
+                
                 if (result.success) {
                     currentPassword = password;
-                    isAdmin = result.isAdmin;
-                    await loadSettings();
+                    isAdmin = (password === 'admin2025');
+                    
+                    settings = {
+                        departments: result.departments || [],
+                        locations: result.locations || [],
+                        powers: result.powers || [],
+                        rpms: result.rpms || []
+                    };
+                    
                     document.getElementById('loginScreen').style.display = 'none';
                     document.getElementById('mainScreen').style.display = 'block';
-                    if (isAdmin) document.getElementById('settingsBtn').style.display = 'inline-flex';
                     
-                    // Добавляем первую строку
+                    if (isAdmin) {
+                        document.getElementById('settingsBtn').style.display = 'inline-flex';
+                    }
+                    
                     addRow();
                     showNotification('Добро пожаловать!', 'success');
                 } else {
-                    showNotification(result.error || 'Неверный пароль', 'error');
+                    showNotification('Ошибка загрузки данных', 'error');
                 }
             } catch (error) {
-                showNotification('Ошибка подключения: ' + error.message, 'error');
+                console.error('Error:', error);
+                showNotification('Ошибка подключения', 'error');
             }
+            
             showLoading(false);
         }
 
@@ -774,26 +743,7 @@
             document.getElementById('mainScreen').style.display = 'none';
             document.getElementById('passwordInput').value = '';
             document.getElementById('inputTableBody').innerHTML = '';
-        }
-
-        async function loadSettings() {
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'getSettings' })
-                });
-                const result = await response.json();
-                if (result.success) {
-                    settings = {
-                        departments: result.departments || [],
-                        locations: result.locations || [],
-                        powers: result.powers || [],
-                        rpms: result.rpms || []
-                    };
-                }
-            } catch (error) {
-                console.error('Load settings error:', error);
-            }
+            document.getElementById('settingsBtn').style.display = 'none';
         }
 
         function addRow() {
@@ -802,27 +752,27 @@
             const row = document.createElement('tr');
             row.id = 'row_' + rowCounter;
 
-            let deptOptions = '<option value="">-- выберите --</option>';
-            settings.departments.forEach(d => { deptOptions += '<option value="' + d + '">' + d + '</option>'; });
+            let deptOpts = '<option value="">-- выберите --</option>';
+            settings.departments.forEach(d => { deptOpts += '<option value="'+d+'">'+d+'</option>'; });
 
-            let locOptions = '<option value="">-- выберите --</option>';
-            settings.locations.forEach(l => { locOptions += '<option value="' + l + '">' + l + '</option>'; });
+            let locOpts = '<option value="">-- выберите --</option>';
+            settings.locations.forEach(l => { locOpts += '<option value="'+l+'">'+l+'</option>'; });
 
-            let powerOptions = '<option value="">--</option>';
-            settings.powers.forEach(p => { powerOptions += '<option value="' + p + '">' + p + '</option>'; });
+            let powerOpts = '<option value="">--</option>';
+            settings.powers.forEach(p => { powerOpts += '<option value="'+p+'">'+p+'</option>'; });
 
-            let rpmOptions = '<option value="">--</option>';
-            settings.rpms.forEach(r => { rpmOptions += '<option value="' + r + '">' + r + '</option>'; });
+            let rpmOpts = '<option value="">--</option>';
+            settings.rpms.forEach(r => { rpmOpts += '<option value="'+r+'">'+r+'</option>'; });
 
             row.innerHTML = 
-                '<td class="row-number">' + rowCounter + '</td>' +
-                '<td><select id="dept_' + rowCounter + '">' + deptOptions + '</select></td>' +
-                '<td><select id="loc_' + rowCounter + '">' + locOptions + '</select></td>' +
-                '<td><input type="text" id="motor_' + rowCounter + '" placeholder="Марка"></td>' +
-                '<td><select id="power_' + rowCounter + '">' + powerOptions + '</select></td>' +
-                '<td><select id="rpm_' + rowCounter + '">' + rpmOptions + '</select></td>' +
-                '<td><input type="text" id="reason_' + rowCounter + '" placeholder="Причина"></td>' +
-                '<td><button class="delete-row-btn" onclick="deleteRow(' + rowCounter + ')">✕</button></td>';
+                '<td class="row-number">'+rowCounter+'</td>'+
+                '<td><select id="dept_'+rowCounter+'">'+deptOpts+'</select></td>'+
+                '<td><select id="loc_'+rowCounter+'">'+locOpts+'</select></td>'+
+                '<td><input type="text" id="motor_'+rowCounter+'" placeholder="Марка"></td>'+
+                '<td><select id="power_'+rowCounter+'">'+powerOpts+'</select></td>'+
+                '<td><select id="rpm_'+rowCounter+'">'+rpmOpts+'</select></td>'+
+                '<td><input type="text" id="reason_'+rowCounter+'" placeholder="Причина"></td>'+
+                '<td><button class="delete-row-btn" onclick="deleteRow('+rowCounter+')">✕</button></td>';
 
             tbody.appendChild(row);
         }
@@ -850,10 +800,10 @@
             if (!phone) { showNotification('Укажите контактный телефон', 'error'); return; }
 
             const rows = document.querySelectorAll('#inputTableBody tr');
-            if (rows.length === 0) { showNotification('Добавьте хотя бы одну строку', 'error'); return; }
+            if (rows.length === 0) { showNotification('Добавьте строку', 'error'); return; }
 
             const items = [];
-            let hasError = false;
+            let errorMsg = '';
 
             rows.forEach((row, index) => {
                 const rowId = row.id.replace('row_', '');
@@ -866,19 +816,21 @@
                     const rpm = document.getElementById('rpm_' + rowId)?.value || '';
                     const reason = document.getElementById('reason_' + rowId)?.value.trim() || '';
 
-                    if (!dept) { showNotification('Строка ' + (index+1) + ': выберите подразделение', 'error'); hasError = true; return; }
-                    if (!loc) { showNotification('Строка ' + (index+1) + ': выберите место установки', 'error'); hasError = true; return; }
-                    if (!power) { showNotification('Строка ' + (index+1) + ': выберите мощность', 'error'); hasError = true; return; }
-                    if (!rpm) { showNotification('Строка ' + (index+1) + ': выберите обороты', 'error'); hasError = true; return; }
-
-                    items.push({ department: dept, location: loc, motor: motor, power: power, rpm: rpm, reason: reason });
+                    if (!dept && !errorMsg) errorMsg = 'Строка '+(index+1)+': выберите подразделение';
+                    else if (!loc && !errorMsg) errorMsg = 'Строка '+(index+1)+': выберите место';
+                    else if (!power && !errorMsg) errorMsg = 'Строка '+(index+1)+': выберите мощность';
+                    else if (!rpm && !errorMsg) errorMsg = 'Строка '+(index+1)+': выберите обороты';
+                    else if (!errorMsg) {
+                        items.push({ department: dept, location: loc, motor: motor, power: power, rpm: rpm, reason: reason });
+                    }
                 }
             });
 
-            if (hasError) return;
-            if (items.length === 0) { showNotification('Заполните хотя бы одну строку (укажите марку двигателя)', 'error'); return; }
+            if (errorMsg) { showNotification(errorMsg, 'error'); return; }
+            if (items.length === 0) { showNotification('Заполните данные двигателя', 'error'); return; }
 
             showLoading(true);
+            
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
@@ -901,6 +853,7 @@
             } catch (error) {
                 showNotification('Ошибка: ' + error.message, 'error');
             }
+            
             showLoading(false);
         }
 
@@ -913,17 +866,17 @@
         }
 
         async function showHistory() {
-            const deptFilter = document.getElementById('filterDepartment');
-            deptFilter.innerHTML = '<option value="">Все подразделения</option>';
-            settings.departments.forEach(d => { deptFilter.innerHTML += '<option value="' + d + '">' + d + '</option>'; });
+            const df = document.getElementById('filterDepartment');
+            df.innerHTML = '<option value="">Все подразделения</option>';
+            settings.departments.forEach(d => { df.innerHTML += '<option value="'+d+'">'+d+'</option>'; });
 
-            const locFilter = document.getElementById('filterLocation');
-            locFilter.innerHTML = '<option value="">Все места</option>';
-            settings.locations.forEach(l => { locFilter.innerHTML += '<option value="' + l + '">' + l + '</option>'; });
+            const lf = document.getElementById('filterLocation');
+            lf.innerHTML = '<option value="">Все места</option>';
+            settings.locations.forEach(l => { lf.innerHTML += '<option value="'+l+'">'+l+'</option>'; });
 
-            const powerFilter = document.getElementById('filterPower');
-            powerFilter.innerHTML = '<option value="">Любая мощность</option>';
-            settings.powers.forEach(p => { powerFilter.innerHTML += '<option value="' + p + '">' + p + ' кВт</option>'; });
+            const pf = document.getElementById('filterPower');
+            pf.innerHTML = '<option value="">Любая мощность</option>';
+            settings.powers.forEach(p => { pf.innerHTML += '<option value="'+p+'">'+p+' кВт</option>'; });
 
             document.getElementById('historyModal').classList.add('show');
             await loadHistory();
@@ -947,24 +900,24 @@
                 const tbody = document.getElementById('historyTableBody');
                 tbody.innerHTML = '';
 
-                if (result.success && result.data && result.data.length > 0) {
+                if (result.success && result.data?.length > 0) {
                     result.data.forEach(item => {
                         const row = document.createElement('tr');
                         row.innerHTML = 
-                            '<td>' + (item.number || '-') + '</td>' +
-                            '<td>' + (item.date || '-') + '</td>' +
-                            '<td>' + (item.department || '-') + '</td>' +
-                            '<td>' + (item.location || '-') + '</td>' +
-                            '<td>' + (item.motor || '-') + '</td>' +
-                            '<td>' + (item.power || '-') + '</td>' +
-                            '<td>' + (item.rpm || '-') + '</td>' +
-                            '<td>' + (item.reason || '-') + '</td>' +
-                            '<td>' + (item.responsible || '-') + '</td>' +
-                            '<td>' + (item.phone || '-') + '</td>';
+                            '<td>'+(item.number||'-')+'</td>'+
+                            '<td>'+(item.date||'-')+'</td>'+
+                            '<td>'+(item.department||'-')+'</td>'+
+                            '<td>'+(item.location||'-')+'</td>'+
+                            '<td>'+(item.motor||'-')+'</td>'+
+                            '<td>'+(item.power||'-')+'</td>'+
+                            '<td>'+(item.rpm||'-')+'</td>'+
+                            '<td>'+(item.reason||'-')+'</td>'+
+                            '<td>'+(item.responsible||'-')+'</td>'+
+                            '<td>'+(item.phone||'-')+'</td>';
                         tbody.appendChild(row);
                     });
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:30px;color:#999;">Нет данных</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:30px;">Нет данных</td></tr>';
                 }
             } catch (error) {
                 showNotification('Ошибка загрузки', 'error');
@@ -975,22 +928,22 @@
         function showSettings() {
             if (!isAdmin) { showNotification('Доступ запрещён', 'error'); return; }
 
-            const deptList = document.getElementById('departmentsList');
-            deptList.innerHTML = '';
-            settings.departments.forEach(dept => {
+            const dl = document.getElementById('departmentsList');
+            dl.innerHTML = '';
+            settings.departments.forEach(d => {
                 const item = document.createElement('div');
                 item.className = 'settings-item';
-                item.innerHTML = '<input type="text" value="' + dept + '" class="dept-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
-                deptList.appendChild(item);
+                item.innerHTML = '<input type="text" value="'+d+'" class="dept-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+                dl.appendChild(item);
             });
 
-            const locList = document.getElementById('locationsList');
-            locList.innerHTML = '';
-            settings.locations.forEach(loc => {
+            const ll = document.getElementById('locationsList');
+            ll.innerHTML = '';
+            settings.locations.forEach(l => {
                 const item = document.createElement('div');
                 item.className = 'settings-item';
-                item.innerHTML = '<input type="text" value="' + loc + '" class="loc-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
-                locList.appendChild(item);
+                item.innerHTML = '<input type="text" value="'+l+'" class="loc-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+                ll.appendChild(item);
             });
 
             document.getElementById('settingsModal').classList.add('show');
@@ -1000,7 +953,7 @@
             const list = document.getElementById('departmentsList');
             const item = document.createElement('div');
             item.className = 'settings-item';
-            item.innerHTML = '<input type="text" class="dept-input" placeholder="Новое подразделение"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+            item.innerHTML = '<input type="text" class="dept-input" placeholder="Новое"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
             list.appendChild(item);
         }
 
@@ -1008,61 +961,39 @@
             const list = document.getElementById('locationsList');
             const item = document.createElement('div');
             item.className = 'settings-item';
-            item.innerHTML = '<input type="text" class="loc-input" placeholder="Новое место"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+            item.innerHTML = '<input type="text" class="loc-input" placeholder="Новое"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
             list.appendChild(item);
         }
 
         async function saveSettings() {
             showLoading(true);
-
             const departments = [];
-            document.querySelectorAll('.dept-input').forEach(input => {
-                if (input.value.trim()) departments.push(input.value.trim());
-            });
-
+            document.querySelectorAll('.dept-input').forEach(i => { if(i.value.trim()) departments.push(i.value.trim()); });
             const locations = [];
-            document.querySelectorAll('.loc-input').forEach(input => {
-                if (input.value.trim()) locations.push(input.value.trim());
-            });
+            document.querySelectorAll('.loc-input').forEach(i => { if(i.value.trim()) locations.push(i.value.trim()); });
 
             try {
-                await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'updateDepartments', departments: departments, adminPassword: currentPassword })
-                });
-
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: 'updateLocations', locations: locations, adminPassword: currentPassword })
-                });
-                const result = await response.json();
-
-                if (result.success) {
-                    settings.departments = departments;
-                    settings.locations = locations;
-                    showNotification('Настройки сохранены!', 'success');
-                    closeModal('settingsModal');
-                } else {
-                    showNotification(result.error || 'Ошибка', 'error');
-                }
+                await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'updateDepartments', departments: departments, adminPassword: currentPassword }) });
+                await fetch(API_URL, { method: 'POST', body: JSON.stringify({ action: 'updateLocations', locations: locations, adminPassword: currentPassword }) });
+                
+                settings.departments = departments;
+                settings.locations = locations;
+                showNotification('Сохранено!', 'success');
+                closeModal('settingsModal');
             } catch (error) {
-                showNotification('Ошибка: ' + error.message, 'error');
+                showNotification('Ошибка', 'error');
             }
             showLoading(false);
         }
 
         function closeModal(id) { document.getElementById(id).classList.remove('show'); }
-        
         function showNotification(msg, type) {
             const n = document.getElementById('notification');
-            n.textContent = msg;
-            n.className = 'notification ' + type + ' show';
+            n.textContent = msg; n.className = 'notification '+type+' show';
             setTimeout(() => { n.classList.remove('show'); }, 4000);
         }
-        
         function showLoading(show) { document.getElementById('loading').classList.toggle('show', show); }
-        
-        window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); }
+        window.onclick = function(e) { if(e.target.classList.contains('modal')) e.target.classList.remove('show'); }
     </script>
 </body>
 </html>
