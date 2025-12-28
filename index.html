@@ -117,6 +117,16 @@
         .btn-danger {
             background: #ff6b6b;
             color: white;
+            padding: 8px 12px;
+            font-size: 16px;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 15px;
+            font-size: 13px;
+            margin-top: 10px;
         }
 
         /* Основной экран */
@@ -184,6 +194,43 @@
             font-size: 14px;
         }
 
+        /* Информация об ответственном */
+        .responsible-section {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .responsible-section .field {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .responsible-section label {
+            display: block;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .responsible-section input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .responsible-section input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
         /* Таблица ввода */
         .input-table {
             overflow-x: auto;
@@ -194,7 +241,7 @@
         .input-table table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 900px;
+            min-width: 950px;
         }
 
         .input-table th {
@@ -218,6 +265,7 @@
         .input-table td {
             padding: 6px 4px;
             border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
         }
 
         .input-table tr:hover {
@@ -250,8 +298,24 @@
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
-        .input-table input[type="text"]::placeholder {
-            color: #bbb;
+        .delete-row-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .delete-row-btn:hover {
+            background: #e74c3c;
+            transform: scale(1.1);
         }
 
         /* Кнопки формы */
@@ -268,6 +332,11 @@
             font-size: 15px;
         }
 
+        .add-row-section {
+            text-align: center;
+            margin-top: 15px;
+        }
+
         /* Уведомления */
         .notification {
             position: fixed;
@@ -280,7 +349,7 @@
             z-index: 1000;
             transform: translateX(400px);
             transition: transform 0.3s;
-            max-width: 300px;
+            max-width: 350px;
         }
 
         .notification.show {
@@ -318,7 +387,7 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            max-width: 1000px;
+            max-width: 1100px;
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
@@ -357,7 +426,7 @@
             color: #333;
         }
 
-        /* Фильтры истории */
+        /* Фильтры */
         .history-filters {
             display: flex;
             gap: 10px;
@@ -381,7 +450,7 @@
         .history-table table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 800px;
+            min-width: 900px;
         }
 
         .history-table th,
@@ -389,7 +458,7 @@
             padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #eee;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .history-table th {
@@ -417,7 +486,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            max-height: 300px;
+            max-height: 250px;
             overflow-y: auto;
         }
 
@@ -433,11 +502,6 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
-        }
-
-        .settings-item input:focus {
-            outline: none;
-            border-color: #667eea;
         }
 
         /* Загрузка */
@@ -469,11 +533,6 @@
             animation: spin 1s linear infinite;
         }
 
-        .loading-text {
-            color: #667eea;
-            font-weight: 600;
-        }
-
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -485,34 +544,17 @@
                 text-align: center;
             }
 
-            .header h1 {
-                font-size: 16px;
-            }
-
             .btn {
                 padding: 10px 15px;
                 font-size: 12px;
             }
 
-            .form-header {
+            .responsible-section {
                 flex-direction: column;
-                text-align: center;
             }
 
-            .input-table th,
-            .input-table td {
-                padding: 4px 2px;
-            }
-
-            .input-table select,
-            .input-table input[type="text"] {
-                padding: 8px 5px;
-                font-size: 12px;
-            }
-
-            .form-actions .btn {
-                padding: 12px 25px;
-                font-size: 14px;
+            .responsible-section .field {
+                min-width: 100%;
             }
         }
     </style>
@@ -521,7 +563,7 @@
     <!-- Загрузка -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
-        <div class="loading-text">Загрузка...</div>
+        <div>Загрузка...</div>
     </div>
 
     <!-- Уведомление -->
@@ -556,22 +598,39 @@
                     <div class="current-date" id="currentDate"></div>
                 </div>
 
+                <!-- Ответственное лицо -->
+                <div class="responsible-section">
+                    <div class="field">
+                        <label>👤 ФИО ответственного *</label>
+                        <input type="text" id="responsibleName" placeholder="Иванов Иван Иванович">
+                    </div>
+                    <div class="field">
+                        <label>📞 Контактный телефон *</label>
+                        <input type="text" id="responsiblePhone" placeholder="+7 (999) 123-45-67">
+                    </div>
+                </div>
+
                 <div class="input-table">
                     <table>
                         <thead>
                             <tr>
-                                <th class="row-number">№</th>
-                                <th style="width: 16%;">Подразделение</th>
-                                <th style="width: 14%;">Место установки</th>
-                                <th style="width: 18%;">Электродвигатель</th>
-                                <th style="width: 10%;">кВт</th>
-                                <th style="width: 10%;">Об/мин</th>
-                                <th style="width: 22%;">Причина ремонта</th>
+                                <th style="width: 35px;">№</th>
+                                <th style="width: 15%;">Подразделение</th>
+                                <th style="width: 13%;">Место установки</th>
+                                <th style="width: 17%;">Электродвигатель</th>
+                                <th style="width: 9%;">кВт</th>
+                                <th style="width: 9%;">Об/мин</th>
+                                <th style="width: 20%;">Причина ремонта</th>
+                                <th style="width: 40px;"></th>
                             </tr>
                         </thead>
                         <tbody id="inputTableBody">
                         </tbody>
                     </table>
+                </div>
+
+                <div class="add-row-section">
+                    <button class="btn btn-add" onclick="addRow()">➕ Добавить строку</button>
                 </div>
 
                 <div class="form-actions">
@@ -607,7 +666,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>№ заявки</th>
+                            <th>№</th>
                             <th>Дата</th>
                             <th>Подразделение</th>
                             <th>Место</th>
@@ -615,6 +674,8 @@
                             <th>кВт</th>
                             <th>Об/мин</th>
                             <th>Причина</th>
+                            <th>Ответственный</th>
+                            <th>Телефон</th>
                         </tr>
                     </thead>
                     <tbody id="historyTableBody">
@@ -651,28 +712,16 @@
     </div>
 
     <script>
-        // ========================================
-        // КОНФИГУРАЦИЯ - ЗАМЕНИТЕ НА ВАШ URL!
-        // ========================================
-        const API_URL = 'https://script.google.com/macros/s/AKfycbwK09VT4DwkcD5YixZ4sVzB3c82pzy84J8n0-NjTR2EoPDE1HUdWHEXbyp3rVon4ygi/exec';
+        // ЗАМЕНИТЕ НА ВАШ НОВЫЙ URL!
+        const API_URL = 'https://script.google.com/macros/s/AKfycbzTtyaaTcdwjeM9sFk7MHp-74kEeGG21qPj4TBiCVmP9v_z9MQXHC9orpjvqnoHzPkp/exec
+
+';
         
-        const ROWS_COUNT = 15;
-        
-        // ========================================
-        // ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-        // ========================================
         let currentPassword = '';
         let isAdmin = false;
-        let settings = {
-            departments: [],
-            locations: [],
-            powers: [],
-            rpms: []
-        };
+        let settings = { departments: [], locations: [], powers: [], rpms: [] };
+        let rowCounter = 0;
 
-        // ========================================
-        // ИНИЦИАЛИЗАЦИЯ
-        // ========================================
         document.addEventListener('DOMContentLoaded', function() {
             updateCurrentDate();
             setInterval(updateCurrentDate, 60000);
@@ -680,100 +729,60 @@
 
         function updateCurrentDate() {
             const now = new Date();
-            const options = { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('ru-RU', options);
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('ru-RU', { 
+                day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+            });
         }
 
-        // ========================================
-        // АВТОРИЗАЦИЯ
-        // ========================================
         async function login() {
             const password = document.getElementById('passwordInput').value;
-            
-            if (!password) {
-                showNotification('Введите пароль', 'error');
-                return;
-            }
+            if (!password) { showNotification('Введите пароль', 'error'); return; }
 
             showLoading(true);
-
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
-                    body: JSON.stringify({
-                        action: 'login',
-                        password: password,
-                        isAdmin: false
-                    })
+                    body: JSON.stringify({ action: 'login', password: password, isAdmin: false })
                 });
-
                 const result = await response.json();
-                console.log('Login result:', result);
 
                 if (result.success) {
                     currentPassword = password;
                     isAdmin = result.isAdmin;
-                    
                     await loadSettings();
-                    
                     document.getElementById('loginScreen').style.display = 'none';
                     document.getElementById('mainScreen').style.display = 'block';
+                    if (isAdmin) document.getElementById('settingsBtn').style.display = 'inline-flex';
                     
-                    if (isAdmin) {
-                        document.getElementById('settingsBtn').style.display = 'inline-flex';
-                    }
-                    
-                    createInputRows();
+                    // Добавляем первую строку
+                    addRow();
                     showNotification('Добро пожаловать!', 'success');
                 } else {
                     showNotification(result.error || 'Неверный пароль', 'error');
                 }
             } catch (error) {
-                console.error('Login error:', error);
                 showNotification('Ошибка подключения: ' + error.message, 'error');
             }
-
             showLoading(false);
         }
 
         function logout() {
             currentPassword = '';
             isAdmin = false;
+            rowCounter = 0;
             document.getElementById('loginScreen').style.display = 'flex';
             document.getElementById('mainScreen').style.display = 'none';
             document.getElementById('passwordInput').value = '';
-            document.getElementById('settingsBtn').style.display = 'none';
+            document.getElementById('inputTableBody').innerHTML = '';
         }
 
-        // ========================================
-        // ЗАГРУЗКА НАСТРОЕК
-        // ========================================
         async function loadSettings() {
             try {
-                console.log('Loading settings from:', API_URL);
-                
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
-                    body: JSON.stringify({
-                        action: 'getSettings'
-                    })
+                    body: JSON.stringify({ action: 'getSettings' })
                 });
-
                 const result = await response.json();
-                console.log('Settings result:', result);
-
                 if (result.success) {
                     settings = {
                         departments: result.departments || [],
@@ -781,130 +790,107 @@
                         powers: result.powers || [],
                         rpms: result.rpms || []
                     };
-                    console.log('Loaded settings:', settings);
-                } else {
-                    console.error('Settings error:', result.error);
-                    showNotification('Ошибка загрузки настроек: ' + result.error, 'error');
                 }
             } catch (error) {
                 console.error('Load settings error:', error);
-                showNotification('Ошибка загрузки: ' + error.message, 'error');
             }
         }
 
-        // ========================================
-        // СОЗДАНИЕ СТРОК ТАБЛИЦЫ
-        // ========================================
-        function createInputRows() {
+        function addRow() {
+            rowCounter++;
             const tbody = document.getElementById('inputTableBody');
-            tbody.innerHTML = '';
+            const row = document.createElement('tr');
+            row.id = 'row_' + rowCounter;
 
-            console.log('Creating rows with settings:', settings);
+            let deptOptions = '<option value="">-- выберите --</option>';
+            settings.departments.forEach(d => { deptOptions += '<option value="' + d + '">' + d + '</option>'; });
 
-            for (let i = 1; i <= ROWS_COUNT; i++) {
-                const row = document.createElement('tr');
-                
-                // Подразделения
-                let deptOptions = '<option value="">-- выберите --</option>';
-                settings.departments.forEach(d => {
-                    deptOptions += '<option value="' + d + '">' + d + '</option>';
-                });
+            let locOptions = '<option value="">-- выберите --</option>';
+            settings.locations.forEach(l => { locOptions += '<option value="' + l + '">' + l + '</option>'; });
 
-                // Места установки
-                let locOptions = '<option value="">-- выберите --</option>';
-                settings.locations.forEach(l => {
-                    locOptions += '<option value="' + l + '">' + l + '</option>';
-                });
+            let powerOptions = '<option value="">--</option>';
+            settings.powers.forEach(p => { powerOptions += '<option value="' + p + '">' + p + '</option>'; });
 
-                // Мощность
-                let powerOptions = '<option value="">--</option>';
-                settings.powers.forEach(p => {
-                    powerOptions += '<option value="' + p + '">' + p + '</option>';
-                });
+            let rpmOptions = '<option value="">--</option>';
+            settings.rpms.forEach(r => { rpmOptions += '<option value="' + r + '">' + r + '</option>'; });
 
-                // Обороты
-                let rpmOptions = '<option value="">--</option>';
-                settings.rpms.forEach(r => {
-                    rpmOptions += '<option value="' + r + '">' + r + '</option>';
-                });
+            row.innerHTML = 
+                '<td class="row-number">' + rowCounter + '</td>' +
+                '<td><select id="dept_' + rowCounter + '">' + deptOptions + '</select></td>' +
+                '<td><select id="loc_' + rowCounter + '">' + locOptions + '</select></td>' +
+                '<td><input type="text" id="motor_' + rowCounter + '" placeholder="Марка"></td>' +
+                '<td><select id="power_' + rowCounter + '">' + powerOptions + '</select></td>' +
+                '<td><select id="rpm_' + rowCounter + '">' + rpmOptions + '</select></td>' +
+                '<td><input type="text" id="reason_' + rowCounter + '" placeholder="Причина"></td>' +
+                '<td><button class="delete-row-btn" onclick="deleteRow(' + rowCounter + ')">✕</button></td>';
 
-                row.innerHTML = 
-                    '<td class="row-number">' + i + '</td>' +
-                    '<td><select id="dept_' + i + '">' + deptOptions + '</select></td>' +
-                    '<td><select id="loc_' + i + '">' + locOptions + '</select></td>' +
-                    '<td><input type="text" id="motor_' + i + '" placeholder="Марка двигателя"></td>' +
-                    '<td><select id="power_' + i + '">' + powerOptions + '</select></td>' +
-                    '<td><select id="rpm_' + i + '">' + rpmOptions + '</select></td>' +
-                    '<td><input type="text" id="reason_' + i + '" placeholder="Причина"></td>';
+            tbody.appendChild(row);
+        }
 
-                tbody.appendChild(row);
+        function deleteRow(id) {
+            const row = document.getElementById('row_' + id);
+            if (row) {
+                row.remove();
+                updateRowNumbers();
             }
         }
 
-        // ========================================
-        // ОТПРАВКА ЗАЯВКИ
-        // ========================================
-        async function submitForm() {
-            const items = [];
+        function updateRowNumbers() {
+            const rows = document.querySelectorAll('#inputTableBody tr');
+            rows.forEach((row, index) => {
+                row.querySelector('.row-number').textContent = index + 1;
+            });
+        }
 
-            for (let i = 1; i <= ROWS_COUNT; i++) {
-                const motor = document.getElementById('motor_' + i).value.trim();
+        async function submitForm() {
+            const responsible = document.getElementById('responsibleName').value.trim();
+            const phone = document.getElementById('responsiblePhone').value.trim();
+
+            if (!responsible) { showNotification('Укажите ФИО ответственного', 'error'); return; }
+            if (!phone) { showNotification('Укажите контактный телефон', 'error'); return; }
+
+            const rows = document.querySelectorAll('#inputTableBody tr');
+            if (rows.length === 0) { showNotification('Добавьте хотя бы одну строку', 'error'); return; }
+
+            const items = [];
+            let hasError = false;
+
+            rows.forEach((row, index) => {
+                const rowId = row.id.replace('row_', '');
+                const motor = document.getElementById('motor_' + rowId)?.value.trim() || '';
                 
                 if (motor) {
-                    items.push({
-                        department: document.getElementById('dept_' + i).value,
-                        location: document.getElementById('loc_' + i).value,
-                        motor: motor,
-                        power: document.getElementById('power_' + i).value,
-                        rpm: document.getElementById('rpm_' + i).value,
-                        reason: document.getElementById('reason_' + i).value.trim()
-                    });
-                }
-            }
+                    const dept = document.getElementById('dept_' + rowId)?.value || '';
+                    const loc = document.getElementById('loc_' + rowId)?.value || '';
+                    const power = document.getElementById('power_' + rowId)?.value || '';
+                    const rpm = document.getElementById('rpm_' + rowId)?.value || '';
+                    const reason = document.getElementById('reason_' + rowId)?.value.trim() || '';
 
-            if (items.length === 0) {
-                showNotification('Заполните хотя бы одну строку', 'error');
-                return;
-            }
+                    if (!dept) { showNotification('Строка ' + (index+1) + ': выберите подразделение', 'error'); hasError = true; return; }
+                    if (!loc) { showNotification('Строка ' + (index+1) + ': выберите место установки', 'error'); hasError = true; return; }
+                    if (!power) { showNotification('Строка ' + (index+1) + ': выберите мощность', 'error'); hasError = true; return; }
+                    if (!rpm) { showNotification('Строка ' + (index+1) + ': выберите обороты', 'error'); hasError = true; return; }
 
-            // Проверка обязательных полей
-            for (let i = 0; i < items.length; i++) {
-                const item = items[i];
-                if (!item.department) {
-                    showNotification('Выберите подразделение для всех строк', 'error');
-                    return;
+                    items.push({ department: dept, location: loc, motor: motor, power: power, rpm: rpm, reason: reason });
                 }
-                if (!item.location) {
-                    showNotification('Выберите место установки для всех строк', 'error');
-                    return;
-                }
-                if (!item.power) {
-                    showNotification('Выберите мощность для всех строк', 'error');
-                    return;
-                }
-                if (!item.rpm) {
-                    showNotification('Выберите обороты для всех строк', 'error');
-                    return;
-                }
-            }
+            });
+
+            if (hasError) return;
+            if (items.length === 0) { showNotification('Заполните хотя бы одну строку (укажите марку двигателя)', 'error'); return; }
 
             showLoading(true);
-
             try {
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
                     body: JSON.stringify({
                         action: 'submit',
                         password: currentPassword,
-                        items: items
+                        items: items,
+                        responsible: responsible,
+                        phone: phone
                     })
                 });
-
                 const result = await response.json();
-                console.log('Submit result:', result);
 
                 if (result.success) {
                     showNotification(result.message || 'Заявка сохранена!', 'success');
@@ -913,45 +899,31 @@
                     showNotification(result.error || 'Ошибка сохранения', 'error');
                 }
             } catch (error) {
-                console.error('Submit error:', error);
                 showNotification('Ошибка: ' + error.message, 'error');
             }
-
             showLoading(false);
         }
 
         function clearForm() {
-            for (let i = 1; i <= ROWS_COUNT; i++) {
-                document.getElementById('dept_' + i).value = '';
-                document.getElementById('loc_' + i).value = '';
-                document.getElementById('motor_' + i).value = '';
-                document.getElementById('power_' + i).value = '';
-                document.getElementById('rpm_' + i).value = '';
-                document.getElementById('reason_' + i).value = '';
-            }
+            document.getElementById('responsibleName').value = '';
+            document.getElementById('responsiblePhone').value = '';
+            document.getElementById('inputTableBody').innerHTML = '';
+            rowCounter = 0;
+            addRow();
         }
 
-        // ========================================
-        // ИСТОРИЯ
-        // ========================================
         async function showHistory() {
             const deptFilter = document.getElementById('filterDepartment');
             deptFilter.innerHTML = '<option value="">Все подразделения</option>';
-            settings.departments.forEach(d => {
-                deptFilter.innerHTML += '<option value="' + d + '">' + d + '</option>';
-            });
+            settings.departments.forEach(d => { deptFilter.innerHTML += '<option value="' + d + '">' + d + '</option>'; });
 
             const locFilter = document.getElementById('filterLocation');
             locFilter.innerHTML = '<option value="">Все места</option>';
-            settings.locations.forEach(l => {
-                locFilter.innerHTML += '<option value="' + l + '">' + l + '</option>';
-            });
+            settings.locations.forEach(l => { locFilter.innerHTML += '<option value="' + l + '">' + l + '</option>'; });
 
             const powerFilter = document.getElementById('filterPower');
             powerFilter.innerHTML = '<option value="">Любая мощность</option>';
-            settings.powers.forEach(p => {
-                powerFilter.innerHTML += '<option value="' + p + '">' + p + ' кВт</option>';
-            });
+            settings.powers.forEach(p => { powerFilter.innerHTML += '<option value="' + p + '">' + p + ' кВт</option>'; });
 
             document.getElementById('historyModal').classList.add('show');
             await loadHistory();
@@ -959,28 +931,19 @@
 
         async function loadHistory() {
             showLoading(true);
-
             try {
-                const filters = {
-                    department: document.getElementById('filterDepartment').value,
-                    location: document.getElementById('filterLocation').value,
-                    power: document.getElementById('filterPower').value
-                };
-
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
                     body: JSON.stringify({
                         action: 'getHistory',
-                        filters: filters
+                        filters: {
+                            department: document.getElementById('filterDepartment').value,
+                            location: document.getElementById('filterLocation').value,
+                            power: document.getElementById('filterPower').value
+                        }
                     })
                 });
-
                 const result = await response.json();
-                console.log('History result:', result);
-
                 const tbody = document.getElementById('historyTableBody');
                 tbody.innerHTML = '';
 
@@ -995,50 +958,38 @@
                             '<td>' + (item.motor || '-') + '</td>' +
                             '<td>' + (item.power || '-') + '</td>' +
                             '<td>' + (item.rpm || '-') + '</td>' +
-                            '<td>' + (item.reason || '-') + '</td>';
+                            '<td>' + (item.reason || '-') + '</td>' +
+                            '<td>' + (item.responsible || '-') + '</td>' +
+                            '<td>' + (item.phone || '-') + '</td>';
                         tbody.appendChild(row);
                     });
                 } else {
-                    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#999;padding:30px;">Нет данных</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:30px;color:#999;">Нет данных</td></tr>';
                 }
             } catch (error) {
-                console.error('History error:', error);
-                showNotification('Ошибка загрузки истории', 'error');
+                showNotification('Ошибка загрузки', 'error');
             }
-
             showLoading(false);
         }
 
-        // ========================================
-        // НАСТРОЙКИ
-        // ========================================
         function showSettings() {
-            if (!isAdmin) {
-                showNotification('Доступ запрещён', 'error');
-                return;
-            }
+            if (!isAdmin) { showNotification('Доступ запрещён', 'error'); return; }
 
-            // Подразделения
             const deptList = document.getElementById('departmentsList');
             deptList.innerHTML = '';
-            settings.departments.forEach((dept, index) => {
+            settings.departments.forEach(dept => {
                 const item = document.createElement('div');
                 item.className = 'settings-item';
-                item.innerHTML = 
-                    '<input type="text" value="' + dept + '" class="dept-input">' +
-                    '<button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+                item.innerHTML = '<input type="text" value="' + dept + '" class="dept-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
                 deptList.appendChild(item);
             });
 
-            // Места установки
             const locList = document.getElementById('locationsList');
             locList.innerHTML = '';
-            settings.locations.forEach((loc, index) => {
+            settings.locations.forEach(loc => {
                 const item = document.createElement('div');
                 item.className = 'settings-item';
-                item.innerHTML = 
-                    '<input type="text" value="' + loc + '" class="loc-input">' +
-                    '<button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+                item.innerHTML = '<input type="text" value="' + loc + '" class="loc-input"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
                 locList.appendChild(item);
             });
 
@@ -1049,9 +1000,7 @@
             const list = document.getElementById('departmentsList');
             const item = document.createElement('div');
             item.className = 'settings-item';
-            item.innerHTML = 
-                '<input type="text" value="" class="dept-input" placeholder="Новое подразделение">' +
-                '<button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+            item.innerHTML = '<input type="text" class="dept-input" placeholder="Новое подразделение"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
             list.appendChild(item);
         }
 
@@ -1059,111 +1008,61 @@
             const list = document.getElementById('locationsList');
             const item = document.createElement('div');
             item.className = 'settings-item';
-            item.innerHTML = 
-                '<input type="text" value="" class="loc-input" placeholder="Новое место">' +
-                '<button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
+            item.innerHTML = '<input type="text" class="loc-input" placeholder="Новое место"><button class="btn btn-danger" onclick="this.parentElement.remove()">✕</button>';
             list.appendChild(item);
         }
 
         async function saveSettings() {
             showLoading(true);
 
-            // Собираем подразделения
-            const deptInputs = document.querySelectorAll('.dept-input');
             const departments = [];
-            deptInputs.forEach(input => {
-                if (input.value.trim()) {
-                    departments.push(input.value.trim());
-                }
+            document.querySelectorAll('.dept-input').forEach(input => {
+                if (input.value.trim()) departments.push(input.value.trim());
             });
 
-            // Собираем места
-            const locInputs = document.querySelectorAll('.loc-input');
             const locations = [];
-            locInputs.forEach(input => {
-                if (input.value.trim()) {
-                    locations.push(input.value.trim());
-                }
+            document.querySelectorAll('.loc-input').forEach(input => {
+                if (input.value.trim()) locations.push(input.value.trim());
             });
 
             try {
-                // Сохраняем подразделения
-                let response = await fetch(API_URL, {
+                await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
-                    body: JSON.stringify({
-                        action: 'updateDepartments',
-                        departments: departments,
-                        adminPassword: currentPassword
-                    })
+                    body: JSON.stringify({ action: 'updateDepartments', departments: departments, adminPassword: currentPassword })
                 });
-                let result = await response.json();
-                
-                if (!result.success) {
-                    showNotification(result.error || 'Ошибка сохранения подразделений', 'error');
-                    showLoading(false);
-                    return;
-                }
 
-                // Сохраняем места
-                response = await fetch(API_URL, {
+                const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain',
-                    },
-                    body: JSON.stringify({
-                        action: 'updateLocations',
-                        locations: locations,
-                        adminPassword: currentPassword
-                    })
+                    body: JSON.stringify({ action: 'updateLocations', locations: locations, adminPassword: currentPassword })
                 });
-                result = await response.json();
+                const result = await response.json();
 
                 if (result.success) {
                     settings.departments = departments;
                     settings.locations = locations;
-                    createInputRows();
                     showNotification('Настройки сохранены!', 'success');
                     closeModal('settingsModal');
                 } else {
-                    showNotification(result.error || 'Ошибка сохранения мест', 'error');
+                    showNotification(result.error || 'Ошибка', 'error');
                 }
             } catch (error) {
-                console.error('Save settings error:', error);
                 showNotification('Ошибка: ' + error.message, 'error');
             }
-
             showLoading(false);
         }
 
-        // ========================================
-        // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-        // ========================================
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('show');
+        function closeModal(id) { document.getElementById(id).classList.remove('show'); }
+        
+        function showNotification(msg, type) {
+            const n = document.getElementById('notification');
+            n.textContent = msg;
+            n.className = 'notification ' + type + ' show';
+            setTimeout(() => { n.classList.remove('show'); }, 4000);
         }
-
-        function showNotification(message, type) {
-            const notif = document.getElementById('notification');
-            notif.textContent = message;
-            notif.className = 'notification ' + type + ' show';
-            
-            setTimeout(() => {
-                notif.classList.remove('show');
-            }, 4000);
-        }
-
-        function showLoading(show) {
-            document.getElementById('loading').classList.toggle('show', show);
-        }
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('show');
-            }
-        }
+        
+        function showLoading(show) { document.getElementById('loading').classList.toggle('show', show); }
+        
+        window.onclick = function(e) { if (e.target.classList.contains('modal')) e.target.classList.remove('show'); }
     </script>
 </body>
 </html>
