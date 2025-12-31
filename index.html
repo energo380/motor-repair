@@ -18,26 +18,26 @@
             color: #fff;
         }
         
+        /* Логотип */
         .logo-container {
             position: fixed;
-            top: 10px;
-            left: 10px;
+            top: 15px;
+            left: 15px;
             z-index: 1000;
-            display: flex;
+            display: none;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .logo {
             width: 50px;
             height: 50px;
             background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            font-weight: bold;
             box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
         }
         
@@ -45,9 +45,9 @@
             font-size: 14px;
             font-weight: bold;
             color: #f39c12;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
+        /* Экран входа */
         .login-screen {
             display: flex;
             justify-content: center;
@@ -69,7 +69,7 @@
         .login-box h1 {
             text-align: center;
             margin-bottom: 10px;
-            font-size: 28px;
+            font-size: 24px;
         }
         
         .login-box p {
@@ -86,7 +86,6 @@
             display: block;
             margin-bottom: 8px;
             color: #ddd;
-            font-weight: 500;
         }
         
         .input-group input,
@@ -98,31 +97,29 @@
             background: rgba(255,255,255,0.1);
             color: #fff;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
         
-        .input-group input:focus,
-        .input-group select:focus {
+        .input-group input:focus {
             outline: none;
             border-color: #f39c12;
-            background: rgba(255,255,255,0.15);
         }
         
         .input-group input::placeholder {
             color: #888;
         }
         
+        /* Кнопки */
         .btn {
-            padding: 15px 25px;
+            padding: 12px 24px;
             border: none;
             border-radius: 10px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 8px;
         }
         
@@ -130,24 +127,17 @@
             background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
             color: #fff;
             width: 100%;
-            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
-        }
-        
-        #loginBtn {
-            padding: 18px 30px;
-            font-size: 18px;
-            margin-top: 10px;
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
         }
         
         .btn-secondary {
             background: rgba(255,255,255,0.1);
             color: #fff;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
         }
         
         .btn-secondary:hover {
@@ -165,10 +155,11 @@
         }
         
         .btn-small {
-            padding: 8px 15px;
+            padding: 8px 16px;
             font-size: 14px;
         }
         
+        /* Главный экран */
         .main-screen {
             display: none;
             padding: 20px;
@@ -177,30 +168,30 @@
             margin: 0 auto;
         }
         
-        .top-panel {
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
             gap: 15px;
         }
         
-        .top-panel h1 {
-            font-size: 24px;
+        .header h1 {
+            font-size: 22px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .top-buttons {
+        .header-buttons {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
         }
         
+        /* Форма */
         .form-section {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 25px;
@@ -209,18 +200,20 @@
         
         .form-section h2 {
             margin-bottom: 20px;
+            font-size: 18px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 20px;
         }
         
         .datetime {
             font-size: 14px;
             color: #aaa;
             font-weight: normal;
+            margin-left: auto;
         }
         
+        /* Таблица */
         .table-container {
             overflow-x: auto;
             margin-bottom: 20px;
@@ -229,7 +222,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            min-width: 1200px;
+            min-width: 1100px;
         }
         
         th, td {
@@ -245,10 +238,10 @@
             white-space: nowrap;
         }
         
-        td input,
-        td select {
+        td select,
+        td input {
             width: 100%;
-            padding: 8px 10px;
+            padding: 8px;
             border: 1px solid rgba(255,255,255,0.2);
             border-radius: 6px;
             background: rgba(255,255,255,0.1);
@@ -256,8 +249,8 @@
             font-size: 14px;
         }
         
-        td input:focus,
-        td select:focus {
+        td select:focus,
+        td input:focus {
             outline: none;
             border-color: #f39c12;
         }
@@ -268,26 +261,25 @@
         }
         
         .col-num { width: 40px; text-align: center; }
-        .col-dept { width: 140px; }
-        .col-loc { width: 120px; }
-        .col-motor { width: 130px; }
-        .col-inv { width: 90px; }
+        .col-dept { width: 150px; }
+        .col-loc { width: 130px; }
+        .col-motor { width: 120px; }
+        .col-inv { width: 80px; }
         .col-manuf { width: 100px; }
-        .col-power { width: 80px; }
+        .col-power { width: 70px; }
         .col-speed { width: 80px; }
-        .col-reason { width: 150px; }
-        .col-del { width: 40px; text-align: center; }
+        .col-reason { width: 130px; }
+        .col-del { width: 40px; }
         
         .btn-delete-row {
-            background: rgba(231, 76, 60, 0.3);
+            background: rgba(231, 76, 60, 0.2);
             border: none;
             color: #e74c3c;
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
-            transition: all 0.3s ease;
         }
         
         .btn-delete-row:hover {
@@ -295,6 +287,7 @@
             color: #fff;
         }
         
+        /* Блок ответственного */
         .responsible-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -308,9 +301,9 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
         
+        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -328,12 +321,11 @@
         .modal-content {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             border-radius: 15px;
-            padding: 30px;
+            padding: 25px;
             width: 100%;
             max-width: 1200px;
             max-height: 90vh;
             overflow-y: auto;
-            position: relative;
         }
         
         .modal-header {
@@ -343,13 +335,6 @@
             margin-bottom: 20px;
         }
         
-        .modal-header h2 {
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
         .modal-close {
             background: none;
             border: none;
@@ -357,13 +342,13 @@
             font-size: 28px;
             cursor: pointer;
             opacity: 0.7;
-            transition: opacity 0.3s;
         }
         
         .modal-close:hover {
             opacity: 1;
         }
         
+        /* Фильтры */
         .filters {
             display: flex;
             gap: 15px;
@@ -391,31 +376,17 @@
             background: rgba(255,255,255,0.1);
             color: #fff;
             font-size: 14px;
-            min-width: 150px;
+            min-width: 140px;
         }
         
         .filter-group select option {
             background: #1a1a2e;
         }
         
-        .history-table {
-            min-width: 1400px;
-        }
-        
-        .history-table th {
-            position: sticky;
-            top: 0;
-            background: #1a1a2e;
-            z-index: 10;
-        }
-        
-        .history-table td {
-            font-size: 13px;
-        }
-        
+        /* Настройки */
         .settings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
         
@@ -427,9 +398,7 @@
         
         .settings-section h3 {
             margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 16px;
         }
         
         .settings-list {
@@ -448,6 +417,7 @@
             padding: 8px 12px;
             background: rgba(255,255,255,0.1);
             border-radius: 6px;
+            font-size: 14px;
         }
         
         .settings-item button {
@@ -456,13 +426,9 @@
             color: #e74c3c;
             cursor: pointer;
             font-size: 16px;
-            opacity: 0.7;
         }
         
-        .settings-item button:hover {
-            opacity: 1;
-        }
-        
+        /* Уведомления */
         .notification {
             position: fixed;
             top: 20px;
@@ -473,7 +439,6 @@
             font-weight: 500;
             z-index: 3000;
             animation: slideIn 0.3s ease;
-            max-width: 350px;
         }
         
         .notification.success {
@@ -485,16 +450,11 @@
         }
         
         @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
         
+        /* Загрузка */
         .loading {
             display: none;
             position: fixed;
@@ -521,64 +481,40 @@
             to { transform: rotate(360deg); }
         }
         
+        /* Адаптив */
         @media (max-width: 768px) {
             .main-screen {
                 padding: 15px;
                 padding-top: 70px;
-                padding-left: 15px;
             }
             
             .logo-container {
-                top: 5px;
-                left: 5px;
+                top: 10px;
+                left: 10px;
             }
             
             .logo {
                 width: 40px;
                 height: 40px;
-                font-size: 20px;
             }
             
             .logo-text {
                 display: none;
             }
             
-            .top-panel {
+            .header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             
-            .top-panel h1 {
+            .header h1 {
                 font-size: 18px;
-            }
-            
-            .top-buttons {
-                width: 100%;
-                justify-content: flex-start;
-            }
-            
-            .btn {
-                padding: 10px 15px;
-                font-size: 14px;
-            }
-            
-            .form-section {
-                padding: 15px;
-            }
-            
-            th, td {
-                padding: 8px 5px;
-                font-size: 12px;
-            }
-            
-            .modal-content {
-                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="logo-container" id="logoContainer" style="display: none;">
+    <div class="logo-container" id="logoContainer">
         <div class="logo">⚡</div>
         <span class="logo-text">РЕМОНТ ЭД</span>
     </div>
@@ -587,34 +523,31 @@
         <div class="spinner"></div>
     </div>
     
+    <!-- ЭКРАН ВХОДА -->
     <div class="login-screen" id="loginScreen">
         <div class="login-box">
             <h1>⚡ Вход в систему</h1>
             <p>Заявки на ремонт электродвигателей</p>
-            
             <div class="input-group">
-                <label for="password">Пароль:</label>
-                <input type="text" id="password" placeholder="Введите пароль" autocomplete="off">
+                <label>Пароль:</label>
+                <input type="password" id="password" placeholder="Введите пароль">
             </div>
-            
-            <button class="btn btn-primary" id="loginBtn" onclick="login()">
-                Войти
-            </button>
+            <button class="btn btn-primary" onclick="login()">Войти</button>
         </div>
     </div>
-    
+    <!-- ГЛАВНЫЙ ЭКРАН -->
     <div class="main-screen" id="mainScreen">
-        <div class="top-panel">
+        <div class="header">
             <h1>⚡ Заявка на ремонт электродвигателей</h1>
-            <div class="top-buttons">
-                <button class="btn btn-secondary" onclick="showHistory()">История</button>
-                <button class="btn btn-secondary" id="settingsBtn" style="display:none;" onclick="showSettings()">Настройки</button>
-                <button class="btn btn-secondary" onclick="logout()">Выход</button>
+            <div class="header-buttons">
+                <button class="btn btn-secondary" onclick="showHistory()">📋 История</button>
+                <button class="btn btn-secondary" id="settingsBtn" style="display:none;" onclick="showSettings()">⚙ Настройки</button>
+                <button class="btn btn-secondary" onclick="logout()">🚪 Выход</button>
             </div>
         </div>
         
         <div class="form-section">
-            <h2>Новая заявка <span class="datetime" id="currentDateTime"></span></h2>
+            <h2>📝 Новая заявка <span class="datetime" id="currentDateTime"></span></h2>
             
             <div class="table-container">
                 <table>
@@ -624,7 +557,7 @@
                             <th class="col-dept">Подразделение</th>
                             <th class="col-loc">Место установки</th>
                             <th class="col-motor">Электродвигатель</th>
-                            <th class="col-inv">Инв. номер</th>
+                            <th class="col-inv">Инв. №</th>
                             <th class="col-manuf">Производитель</th>
                             <th class="col-power">кВт</th>
                             <th class="col-speed">Об/мин</th>
@@ -640,51 +573,52 @@
             
             <div class="responsible-section">
                 <div class="input-group">
-                    <label for="responsible">ФИО ответственного:</label>
+                    <label>ФИО ответственного:</label>
                     <input type="text" id="responsible" placeholder="Иванов Иван Иванович" maxlength="50">
                 </div>
                 <div class="input-group">
-                    <label for="phone">Контактный телефон:</label>
-                    <input type="text" id="phone" placeholder="+7 999 123-45-67" maxlength="20">
+                    <label>Контактный телефон:</label>
+                    <input type="text" id="phone" placeholder="+7 (999) 123-45-67" maxlength="20">
                 </div>
             </div>
             
             <div class="form-buttons">
-                <button class="btn btn-danger" onclick="clearForm()">Очистить</button>
-                <button class="btn btn-success" onclick="submitForm()">Сохранить заявку</button>
+                <button class="btn btn-danger" onclick="clearForm()">🗑 Очистить</button>
+                <button class="btn btn-success" onclick="submitForm()">💾 Сохранить заявку</button>
             </div>
         </div>
     </div>
     
+    <!-- МОДАЛЬНОЕ ОКНО: ИСТОРИЯ -->
     <div class="modal" id="historyModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>История заявок</h2>
-                <button class="modal-close" onclick="closeHistory()">×</button>
+                <h2>📋 История заявок</h2>
+                <button class="modal-close" onclick="closeHistory()">&times;</button>
             </div>
             
             <div class="filters">
                 <div class="filter-group">
                     <label>Подразделение:</label>
-                    <select id="filterDepartment"><option value="">Все</option></select>
+                    <select id="filterDepartment"></select>
                 </div>
                 <div class="filter-group">
                     <label>Место установки:</label>
-                    <select id="filterLocation"><option value="">Все</option></select>
+                    <select id="filterLocation"></select>
                 </div>
                 <div class="filter-group">
                     <label>Мощность:</label>
-                    <select id="filterPower"><option value="">Любая</option></select>
+                    <select id="filterPower"></select>
                 </div>
                 <div class="filter-group">
                     <label>Инв. номер:</label>
                     <input type="text" id="filterInvNumber" placeholder="Поиск..." maxlength="5">
                 </div>
-                <button class="btn btn-primary btn-small" onclick="loadHistory()">Показать</button>
+                <button class="btn btn-primary btn-small" onclick="loadHistory()">🔍 Найти</button>
             </div>
             
             <div class="table-container">
-                <table class="history-table">
+                <table>
                     <thead>
                         <tr>
                             <th>№ заявки</th>
@@ -707,53 +641,56 @@
         </div>
     </div>
     
+    <!-- МОДАЛЬНОЕ ОКНО: НАСТРОЙКИ -->
     <div class="modal" id="settingsModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Настройки</h2>
-                <button class="modal-close" onclick="closeSettings()">×</button>
+                <h2>⚙ Настройки справочников</h2>
+                <button class="modal-close" onclick="closeSettings()">&times;</button>
             </div>
             
             <div class="settings-grid">
                 <div class="settings-section">
-                    <h3>Подразделения</h3>
+                    <h3>🏭 Подразделения</h3>
                     <div class="settings-list" id="departmentsList"></div>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newDepartment" placeholder="Новое подразделение" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="newDepartment" placeholder="Новое подразделение" maxlength="30" style="flex:1; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.1); color:#fff;">
                         <button class="btn btn-success btn-small" onclick="addDepartment()">+</button>
                     </div>
                 </div>
                 
                 <div class="settings-section">
-                    <h3>Места установки</h3>
+                    <h3>📍 Места установки</h3>
                     <div class="settings-list" id="locationsList"></div>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newLocation" placeholder="Новое место" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="newLocation" placeholder="Новое место" maxlength="30" style="flex:1; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.1); color:#fff;">
                         <button class="btn btn-success btn-small" onclick="addLocation()">+</button>
                     </div>
                 </div>
                 
                 <div class="settings-section">
-                    <h3>Производители</h3>
+                    <h3>�icing Производители</h3>
                     <div class="settings-list" id="manufacturersList"></div>
-                    <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newManufacturer" placeholder="Новый производитель" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                    <div style="display:flex; gap:10px;">
+                        <input type="text" id="newManufacturer" placeholder="Новый производитель" maxlength="30" style="flex:1; padding:8px; border-radius:6px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.1); color:#fff;">
                         <button class="btn btn-success btn-small" onclick="addManufacturer()">+</button>
                     </div>
                 </div>
             </div>
             
-            <div style="margin-top: 20px; text-align: right;">
-                <button class="btn btn-success" onclick="saveSettings()">Сохранить настройки</button>
+            <div style="margin-top:20px; text-align:right;">
+                <button class="btn btn-success" onclick="saveSettings()">💾 Сохранить настройки</button>
             </div>
         </div>
     </div>
+
     <script>
-        const API_URL = 'https://script.google.com/macros/s/AKfycbyde0mkfkX-38BbhVGgNgCy6iEzCUesRT8VK7vED_uoZVdi4Z-3GfHEBjAT1eFoqXu4/exec';
+        // === НАСТРОЙКИ ===
+        var API_URL = 'https://script.google.com/macros/s/AKfycbzldfCbJkJ6AZfzy40Ezu4_nRRZPr5ryJLZZLnImIsuDkrBGFwLK-mbUZaqOPJoXiyT/exec';
         
-        let currentPassword = '';
-        let isAdmin = false;
-        let settings = {
+        var currentPassword = '';
+        var isAdmin = false;
+        var settings = {
             departments: [],
             locations: [],
             powers: [],
@@ -761,9 +698,10 @@
             manufacturers: []
         };
         
-        const MAX_LENGTH = 30;
-        const INV_LENGTH = 5;
+        var MAX_LENGTH = 30;
+        var INV_LENGTH = 5;
         
+        // === ИНИЦИАЛИЗАЦИЯ ===
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('password').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') login();
@@ -773,11 +711,12 @@
         });
         
         function updateDateTime() {
-            const now = new Date();
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            var now = new Date();
+            var options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
             document.getElementById('currentDateTime').textContent = now.toLocaleDateString('ru-RU', options);
         }
         
+        // === ЗАГРУЗКА ===
         function showLoading() {
             document.getElementById('loading').style.display = 'flex';
         }
@@ -786,20 +725,22 @@
             document.getElementById('loading').style.display = 'none';
         }
         
+        // === УВЕДОМЛЕНИЯ ===
         function showNotification(message, type) {
-            const existing = document.querySelector('.notification');
+            var existing = document.querySelector('.notification');
             if (existing) existing.remove();
             
-            const notification = document.createElement('div');
-            notification.className = 'notification ' + type;
-            notification.textContent = message;
-            document.body.appendChild(notification);
+            var div = document.createElement('div');
+            div.className = 'notification ' + type;
+            div.textContent = message;
+            document.body.appendChild(div);
             
-            setTimeout(function() { notification.remove(); }, 4000);
+            setTimeout(function() { div.remove(); }, 4000);
         }
         
-        async function login() {
-            const password = document.getElementById('password').value.trim();
+        // === ВХОД ===
+        function login() {
+            var password = document.getElementById('password').value.trim();
             
             if (!password) {
                 showNotification('Введите пароль', 'error');
@@ -808,45 +749,46 @@
             
             showLoading();
             
-            try {
-                const url = API_URL + '?action=getSettings&password=' + encodeURIComponent(password);
-                const response = await fetch(url);
-                const result = await response.json();
-                
-                if (!result.success) {
+            var url = API_URL + '?action=getSettings&password=' + encodeURIComponent(password);
+            
+            fetch(url)
+                .then(function(response) { return response.json(); })
+                .then(function(result) {
                     hideLoading();
-                    showNotification(result.error || 'Неверный пароль', 'error');
-                    return;
-                }
-                
-                currentPassword = password;
-                isAdmin = result.isAdmin || false;
-                settings = {
-                    departments: result.departments || [],
-                    locations: result.locations || [],
-                    powers: result.powers || [],
-                    speeds: result.speeds || [],
-                    manufacturers: result.manufacturers || []
-                };
-                
-                document.getElementById('loginScreen').style.display = 'none';
-                document.getElementById('mainScreen').style.display = 'block';
-                document.getElementById('logoContainer').style.display = 'flex';
-                
-                if (isAdmin) {
-                    document.getElementById('settingsBtn').style.display = 'inline-flex';
-                }
-                
-                initForm();
-                hideLoading();
-                showNotification('Добро пожаловать!', 'success');
-                
-            } catch (error) {
-                hideLoading();
-                showNotification('Ошибка подключения: ' + error.message, 'error');
-            }
+                    
+                    if (!result.success) {
+                        showNotification(result.error || 'Неверный пароль', 'error');
+                        return;
+                    }
+                    
+                    currentPassword = password;
+                    isAdmin = result.isAdmin || false;
+                    settings = {
+                        departments: result.departments || [],
+                        locations: result.locations || [],
+                        powers: result.powers || [],
+                        speeds: result.speeds || [],
+                        manufacturers: result.manufacturers || []
+                    };
+                    
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainScreen').style.display = 'block';
+                    document.getElementById('logoContainer').style.display = 'flex';
+                    
+                    if (isAdmin) {
+                        document.getElementById('settingsBtn').style.display = 'inline-flex';
+                    }
+                    
+                    initForm();
+                    showNotification('Добро пожаловать!', 'success');
+                })
+                .catch(function(error) {
+                    hideLoading();
+                    showNotification('Ошибка подключения: ' + error.message, 'error');
+                });
         }
         
+        // === ВЫХОД ===
         function logout() {
             currentPassword = '';
             isAdmin = false;
@@ -857,6 +799,7 @@
             document.getElementById('password').value = '';
         }
         
+        // === ИНИЦИАЛИЗАЦИЯ ФОРМЫ ===
         function initForm() {
             document.getElementById('itemsTable').innerHTML = '';
             addRow();
@@ -864,36 +807,39 @@
             document.getElementById('phone').value = '';
         }
         
+        // === СОЗДАНИЕ SELECT ===
         function createSelect(options, placeholder) {
-            let html = '<select><option value="">' + placeholder + '</option>';
-            for (let i = 0; i < options.length; i++) {
+            var html = '<select><option value="">' + placeholder + '</option>';
+            for (var i = 0; i < options.length; i++) {
                 html += '<option value="' + options[i] + '">' + options[i] + '</option>';
             }
             html += '</select>';
             return html;
         }
         
+        // === ДОБАВЛЕНИЕ СТРОКИ ===
         function addRow() {
-            const tbody = document.getElementById('itemsTable');
-            const rowNum = tbody.children.length + 1;
+            var tbody = document.getElementById('itemsTable');
+            var rowNum = tbody.children.length + 1;
             
-            const tr = document.createElement('tr');
+            var tr = document.createElement('tr');
             tr.innerHTML = 
                 '<td class="col-num">' + rowNum + '</td>' +
                 '<td class="col-dept">' + createSelect(settings.departments, 'Выберите...') + '</td>' +
                 '<td class="col-loc">' + createSelect(settings.locations, 'Выберите...') + '</td>' +
                 '<td class="col-motor"><input type="text" placeholder="Марка" maxlength="' + MAX_LENGTH + '"></td>' +
-                '<td class="col-inv"><input type="text" placeholder="00000" maxlength="' + INV_LENGTH + '" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase().replace(/[^A-ZА-Я0-9]/g, \'\')"></td>' +
+                '<td class="col-inv"><input type="text" placeholder="00000" maxlength="' + INV_LENGTH + '" oninput="this.value=this.value.toUpperCase().replace(/[^A-ZА-Я0-9]/g,\'\')"></td>' +
                 '<td class="col-manuf">' + createSelect(settings.manufacturers, 'Выберите...') + '</td>' +
                 '<td class="col-power">' + createSelect(settings.powers, 'кВт') + '</td>' +
                 '<td class="col-speed">' + createSelect(settings.speeds, 'Об/мин') + '</td>' +
                 '<td class="col-reason"><input type="text" placeholder="Причина" maxlength="' + MAX_LENGTH + '"></td>' +
-                '<td class="col-del"><button class="btn-delete-row" onclick="deleteRow(this)" title="Удалить">×</button></td>';
+                '<td class="col-del"><button class="btn-delete-row" onclick="deleteRow(this)">×</button></td>';
             tbody.appendChild(tr);
         }
         
+        // === УДАЛЕНИЕ СТРОКИ ===
         function deleteRow(btn) {
-            const tbody = document.getElementById('itemsTable');
+            var tbody = document.getElementById('itemsTable');
             if (tbody.children.length <= 1) {
                 showNotification('Должна остаться хотя бы одна строка', 'error');
                 return;
@@ -903,12 +849,13 @@
         }
         
         function renumberRows() {
-            const rows = document.querySelectorAll('#itemsTable tr');
-            for (let i = 0; i < rows.length; i++) {
+            var rows = document.querySelectorAll('#itemsTable tr');
+            for (var i = 0; i < rows.length; i++) {
                 rows[i].cells[0].textContent = i + 1;
             }
         }
         
+        // === ОЧИСТКА ФОРМЫ ===
         function clearForm() {
             if (confirm('Очистить все поля формы?')) {
                 initForm();
@@ -916,9 +863,10 @@
             }
         }
         
-        async function submitForm() {
-            const responsible = document.getElementById('responsible').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+        // === ОТПРАВКА ЗАЯВКИ (через GET для обхода CORS) ===
+        function submitForm() {
+            var responsible = document.getElementById('responsible').value.trim();
+            var phone = document.getElementById('phone').value.trim();
             
             if (!responsible) {
                 showNotification('Укажите ФИО ответственного', 'error');
@@ -930,44 +878,28 @@
                 return;
             }
             
-            const rows = document.querySelectorAll('#itemsTable tr');
-            const items = [];
+            var rows = document.querySelectorAll('#itemsTable tr');
+            var items = [];
             
-            for (let i = 0; i < rows.length; i++) {
-                const row = rows[i];
-                const cells = row.cells;
+            for (var i = 0; i < rows.length; i++) {
+                var cells = rows[i].cells;
+                var motor = cells[3].querySelector('input').value.trim();
                 
-                const motor = cells[3].querySelector('input').value.trim();
                 if (!motor) continue;
                 
-                const department = cells[1].querySelector('select').value;
-                const location = cells[2].querySelector('select').value;
-                const invNumber = cells[4].querySelector('input').value.trim().toUpperCase();
-                const manufacturer = cells[5].querySelector('select').value;
-                const power = cells[6].querySelector('select').value;
-                const speed = cells[7].querySelector('select').value;
-                const reason = cells[8].querySelector('input').value.trim();
+                var department = cells[1].querySelector('select').value;
+                var location = cells[2].querySelector('select').value;
+                var invNumber = cells[4].querySelector('input').value.trim().toUpperCase();
+                var manufacturer = cells[5].querySelector('select').value;
+                var power = cells[6].querySelector('select').value;
+                var speed = cells[7].querySelector('select').value;
+                var reason = cells[8].querySelector('input').value.trim();
                 
-                if (!department) {
-                    showNotification('Строка ' + (i + 1) + ': выберите подразделение', 'error');
-                    return;
-                }
-                if (!location) {
-                    showNotification('Строка ' + (i + 1) + ': выберите место установки', 'error');
-                    return;
-                }
-                if (!manufacturer) {
-                    showNotification('Строка ' + (i + 1) + ': выберите производителя', 'error');
-                    return;
-                }
-                if (!power) {
-                    showNotification('Строка ' + (i + 1) + ': выберите мощность', 'error');
-                    return;
-                }
-                if (!speed) {
-                    showNotification('Строка ' + (i + 1) + ': выберите обороты', 'error');
-                    return;
-                }
+                if (!department) { showNotification('Строка ' + (i+1) + ': выберите подразделение', 'error'); return; }
+                if (!location) { showNotification('Строка ' + (i+1) + ': выберите место', 'error'); return; }
+                if (!manufacturer) { showNotification('Строка ' + (i+1) + ': выберите производителя', 'error'); return; }
+                if (!power) { showNotification('Строка ' + (i+1) + ': выберите мощность', 'error'); return; }
+                if (!speed) { showNotification('Строка ' + (i+1) + ': выберите обороты', 'error'); return; }
                 
                 items.push({
                     department: department,
@@ -988,74 +920,37 @@
             
             showLoading();
             
-            try {
-                const postData = {
-                    action: 'submit',
-                    password: currentPassword,
-                    responsible: responsible,
-                    phone: phone,
-                    items: items
-                };
-                
-                const result = await sendData(postData);
-                
-                hideLoading();
-                
-                if (result.success) {
-                    showNotification('Заявка ' + result.applicationNumber + ' сохранена! Записей: ' + result.count, 'success');
-                    initForm();
-                } else {
-                    showNotification(result.error || 'Ошибка сохранения', 'error');
-                }
-                
-            } catch (error) {
-                hideLoading();
-                showNotification('Ошибка: ' + error.message, 'error');
-            }
+            var data = {
+                responsible: responsible,
+                phone: phone,
+                items: items
+            };
+            
+            var url = API_URL + '?action=submit&password=' + encodeURIComponent(currentPassword) + '&data=' + encodeURIComponent(JSON.stringify(data));
+            
+            fetch(url)
+                .then(function(response) { return response.json(); })
+                .then(function(result) {
+                    hideLoading();
+                    if (result.success) {
+                        showNotification('✓ Заявка ' + result.applicationNumber + ' сохранена! Записей: ' + result.count, 'success');
+                        initForm();
+                    } else {
+                        showNotification(result.error || 'Ошибка сохранения', 'error');
+                    }
+                })
+                .catch(function(error) {
+                    hideLoading();
+                    showNotification('Ошибка: ' + error.message, 'error');
+                });
         }
         
-        function sendData(data) {
-            return new Promise(function(resolve, reject) {
-                const form = document.createElement('form');
-                form.method = 'POST';
-                form.action = API_URL;
-                form.target = 'hidden_iframe';
-                form.style.display = 'none';
-                
-                const input = document.createElement('input');
-                input.type = 'hidden';
-                input.name = 'data';
-                input.value = JSON.stringify(data);
-                form.appendChild(input);
-                
-                let iframe = document.getElementById('hidden_iframe');
-                if (!iframe) {
-                    iframe = document.createElement('iframe');
-                    iframe.name = 'hidden_iframe';
-                    iframe.id = 'hidden_iframe';
-                    iframe.style.display = 'none';
-                    document.body.appendChild(iframe);
-                }
-                
-                document.body.appendChild(form);
-                form.submit();
-                document.body.removeChild(form);
-                
-                setTimeout(function() {
-                    resolve({ 
-                        success: true, 
-                        applicationNumber: 'Отправлено',
-                        count: data.items.length
-                    });
-                }, 3000);
-            });
-        }
-        
+        // === ИСТОРИЯ ===
         function showHistory() {
             document.getElementById('historyModal').style.display = 'flex';
-            fillFilterSelect('filterDepartment', settings.departments, 'Все');
-            fillFilterSelect('filterLocation', settings.locations, 'Все');
-            fillFilterSelect('filterPower', settings.powers, 'Любая');
+            fillFilter('filterDepartment', settings.departments, 'Все');
+            fillFilter('filterLocation', settings.locations, 'Все');
+            fillFilter('filterPower', settings.powers, 'Любая');
             loadHistory();
         }
         
@@ -1063,75 +958,74 @@
             document.getElementById('historyModal').style.display = 'none';
         }
         
-        function fillFilterSelect(id, options, placeholder) {
-            const select = document.getElementById(id);
+        function fillFilter(id, options, placeholder) {
+            var select = document.getElementById(id);
             select.innerHTML = '<option value="">' + placeholder + '</option>';
-            for (let i = 0; i < options.length; i++) {
+            for (var i = 0; i < options.length; i++) {
                 select.innerHTML += '<option value="' + options[i] + '">' + options[i] + '</option>';
             }
         }
         
-        async function loadHistory() {
-            const department = document.getElementById('filterDepartment').value;
-            const location = document.getElementById('filterLocation').value;
-            const power = document.getElementById('filterPower').value;
-            const invNumber = document.getElementById('filterInvNumber').value.trim();
+        function loadHistory() {
+            var department = document.getElementById('filterDepartment').value;
+            var location = document.getElementById('filterLocation').value;
+            var power = document.getElementById('filterPower').value;
+            var invNumber = document.getElementById('filterInvNumber').value.trim();
             
             showLoading();
             
-            try {
-                let url = API_URL + '?action=getHistory&password=' + encodeURIComponent(currentPassword);
-                if (department) url += '&department=' + encodeURIComponent(department);
-                if (location) url += '&location=' + encodeURIComponent(location);
-                if (power) url += '&power=' + encodeURIComponent(power);
-                if (invNumber) url += '&invNumber=' + encodeURIComponent(invNumber);
-                
-                const response = await fetch(url);
-                const result = await response.json();
-                
-                hideLoading();
-                
-                if (result.success) {
-                    renderHistory(result.data);
-                } else {
-                    showNotification(result.error || 'Ошибка загрузки', 'error');
-                }
-                
-            } catch (error) {
-                hideLoading();
-                showNotification('Ошибка: ' + error.message, 'error');
-            }
+            var url = API_URL + '?action=getHistory&password=' + encodeURIComponent(currentPassword);
+            if (department) url += '&department=' + encodeURIComponent(department);
+            if (location) url += '&location=' + encodeURIComponent(location);
+            if (power) url += '&power=' + encodeURIComponent(power);
+            if (invNumber) url += '&invNumber=' + encodeURIComponent(invNumber);
+            
+            fetch(url)
+                .then(function(response) { return response.json(); })
+                .then(function(result) {
+                    hideLoading();
+                    if (result.success) {
+                        renderHistory(result.data);
+                    } else {
+                        showNotification(result.error || 'Ошибка загрузки', 'error');
+                    }
+                })
+                .catch(function(error) {
+                    hideLoading();
+                    showNotification('Ошибка: ' + error.message, 'error');
+                });
         }
         
         function renderHistory(data) {
-            const tbody = document.getElementById('historyTable');
+            var tbody = document.getElementById('historyTable');
             
             if (data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:30px; color:#aaa;">Заявки не найдены</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="12" style="text-align:center; padding:30px; color:#888;">Заявки не найдены</td></tr>';
                 return;
             }
             
-            let html = '';
-            for (let i = 0; i < data.length; i++) {
-                const row = data[i];
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+                var r = data[i];
                 html += '<tr>' +
-                    '<td>' + (row.number || '') + '</td>' +
-                    '<td>' + (row.date || '') + '</td>' +
-                    '<td>' + (row.department || '') + '</td>' +
-                    '<td>' + (row.location || '') + '</td>' +
-                    '<td>' + (row.motor || '') + '</td>' +
-                    '<td>' + (row.invNumber || '') + '</td>' +
-                    '<td>' + (row.manufacturer || '') + '</td>' +
-                    '<td>' + (row.power || '') + '</td>' +
-                    '<td>' + (row.speed || '') + '</td>' +
-                    '<td>' + (row.reason || '') + '</td>' +
-                    '<td>' + (row.responsible || '') + '</td>' +
-                    '<td>' + (row.phone || '') + '</td>' +
+                    '<td>' + (r.number || '') + '</td>' +
+                    '<td>' + (r.date || '') + '</td>' +
+                    '<td>' + (r.department || '') + '</td>' +
+                    '<td>' + (r.location || '') + '</td>' +
+                    '<td>' + (r.motor || '') + '</td>' +
+                    '<td>' + (r.invNumber || '') + '</td>' +
+                    '<td>' + (r.manufacturer || '') + '</td>' +
+                    '<td>' + (r.power || '') + '</td>' +
+                    '<td>' + (r.speed || '') + '</td>' +
+                    '<td>' + (r.reason || '') + '</td>' +
+                    '<td>' + (r.responsible || '') + '</td>' +
+                    '<td>' + (r.phone || '') + '</td>' +
                     '</tr>';
             }
             tbody.innerHTML = html;
         }
         
+        // === НАСТРОЙКИ ===
         function showSettings() {
             document.getElementById('settingsModal').style.display = 'flex';
             renderSettingsList('departmentsList', settings.departments);
@@ -1144,15 +1038,17 @@
         }
         
         function renderSettingsList(containerId, items) {
-            const container = document.getElementById(containerId);
-            let html = '';
-            for (let i = 0; i < items.length; i++) {
-                html += '<div class="settings-item"><span>' + items[i] + '</span><button onclick="removeSettingsItem(\'' + containerId + '\', \'' + items[i].replace(/'/g, "\\'") + '\')">×</button></div>';
+            var container = document.getElementById(containerId);
+            var html = '';
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var escaped = item.replace(/'/g, "\\'");
+                html += '<div class="settings-item"><span>' + item + '</span><button onclick="removeItem(\'' + containerId + '\',\'' + escaped + '\')">×</button></div>';
             }
             container.innerHTML = html;
         }
         
-        function removeSettingsItem(containerId, item) {
+        function removeItem(containerId, item) {
             if (containerId === 'departmentsList') {
                 settings.departments = settings.departments.filter(function(d) { return d !== item; });
                 renderSettingsList(containerId, settings.departments);
@@ -1166,8 +1062,8 @@
         }
         
         function addDepartment() {
-            const input = document.getElementById('newDepartment');
-            const value = input.value.trim().substring(0, MAX_LENGTH);
+            var input = document.getElementById('newDepartment');
+            var value = input.value.trim();
             if (value && settings.departments.indexOf(value) === -1) {
                 settings.departments.push(value);
                 renderSettingsList('departmentsList', settings.departments);
@@ -1176,8 +1072,8 @@
         }
         
         function addLocation() {
-            const input = document.getElementById('newLocation');
-            const value = input.value.trim().substring(0, MAX_LENGTH);
+            var input = document.getElementById('newLocation');
+            var value = input.value.trim();
             if (value && settings.locations.indexOf(value) === -1) {
                 settings.locations.push(value);
                 renderSettingsList('locationsList', settings.locations);
@@ -1186,8 +1082,8 @@
         }
         
         function addManufacturer() {
-            const input = document.getElementById('newManufacturer');
-            const value = input.value.trim().substring(0, MAX_LENGTH);
+            var input = document.getElementById('newManufacturer');
+            var value = input.value.trim();
             if (value && settings.manufacturers.indexOf(value) === -1) {
                 settings.manufacturers.push(value);
                 renderSettingsList('manufacturersList', settings.manufacturers);
@@ -1195,36 +1091,32 @@
             }
         }
         
-        asyncSettings() {
+        function saveSettings() {
             showLoading();
             
-            try {
-                await sendData({
-                    action: 'updateDepartments',
-                    password: currentPassword,
-                    items: settings.departments
-                });
-                
-                await sendData({
-                    action: 'updateLocations',
-                    password: currentPassword,
-                    items: settings.locations
-                });
-                
-                await sendData({
-                    action: 'updateManufacturers',
-                    password: currentPassword,
-                    items: settings.manufacturers
-                });
-                
-                hideLoading();
-                showNotification('Настройки сохранены!', 'success');
-                closeSettings();
-                
-            } catch (error) {
-                hideLoading();
-                showNotification('Ошибка: ' + error.message, 'error');
+            var saved = 0;
+            var total = 3;
+            
+            function checkDone() {
+                saved++;
+                if (saved >= total) {
+                    hideLoading();
+                    showNotification('Настройки сохранены!', 'success');
+                    closeSettings();
+                }
             }
+            
+            // Сохраняем подразделения
+            var url1 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=departments&items=' + encodeURIComponent(JSON.stringify(settings.departments));
+            fetch(url1).then(checkDone).catch(checkDone);
+            
+            // Сохраняем места
+            var url2 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=locations&items=' + encodeURIComponent(JSON.stringify(settings.locations));
+            fetch(url2).then(checkDone).catch(checkDone);
+            
+            // Сохраняем производителей
+            var url3 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=manufacturers&items=' + encodeURIComponent(JSON.stringify(settings.manufacturers));
+            fetch(url3).then(checkDone).catch(checkDone);
         }
     </script>
 </body>
