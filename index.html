@@ -1,26 +1,10 @@
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ДАТА: 2025
-
-ИЗМЕНЕНИЯ v2.0:
-- Исправлена видимость кнопки "Войти"
-- Добавлено поле "Инвентарный номер" (5 знаков) + фильтр
-- Добавлено поле "Производитель" (выпадающий список)
-- Добавлен логотип
-- Валидация: ограничение 20 символов
-- Проверка пароля на сервере
-
-ЧАСТЬ 1 из 6: DOCTYPE + HEAD + Начало стилей
-============================================================ -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡ Заявки на ремонт электродвигателей</title>
+    <title>Заявки на ремонт электродвигателей</title>
     <style>
-        /* === СБРОС И БАЗОВЫЕ СТИЛИ === */
         * {
             margin: 0;
             padding: 0;
@@ -34,7 +18,6 @@
             color: #fff;
         }
         
-        /* === ЛОГОТИП === */
         .logo-container {
             position: fixed;
             top: 10px;
@@ -65,7 +48,6 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
-        /* === ЭКРАН ВХОДА === */
         .login-screen {
             display: flex;
             justify-content: center;
@@ -96,7 +78,6 @@
             margin-bottom: 30px;
         }
         
-        /* === ПОЛЯ ВВОДА === */
         .input-group {
             margin-bottom: 20px;
         }
@@ -130,17 +111,7 @@
         .input-group input::placeholder {
             color: #888;
         }
-<!-- ============================================================
-КОНЕЦ ЧАСТИ 1 из 6
-Продолжение в ЧАСТИ 2...
-============================================================ -->
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ЧАСТЬ 2 из 6: Продолжение стилей (кнопки, таблицы, панель)
-============================================================ -->
         
-        /* === КНОПКИ === */
         .btn {
             padding: 15px 25px;
             border: none;
@@ -163,17 +134,15 @@
         }
         
         .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
-}
-
-/* === КНОПКА ВХОДА (увеличенная) === */
-#loginBtn {
-    padding: 18px 30px;
-    font-size: 18px;
-    margin-top: 10px;
-}
-
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.5);
+        }
+        
+        #loginBtn {
+            padding: 18px 30px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
         
         .btn-secondary {
             background: rgba(255,255,255,0.1);
@@ -200,7 +169,6 @@
             font-size: 14px;
         }
         
-        /* === ГЛАВНЫЙ ЭКРАН === */
         .main-screen {
             display: none;
             padding: 20px;
@@ -209,7 +177,6 @@
             margin: 0 auto;
         }
         
-        /* === ВЕРХНЯЯ ПАНЕЛЬ === */
         .top-panel {
             display: flex;
             justify-content: space-between;
@@ -232,7 +199,6 @@
             flex-wrap: wrap;
         }
         
-        /* === ФОРМА ЗАЯВКИ === */
         .form-section {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
@@ -255,7 +221,6 @@
             font-weight: normal;
         }
         
-        /* === ТАБЛИЦА ВВОДА === */
         .table-container {
             overflow-x: auto;
             margin-bottom: 20px;
@@ -302,7 +267,6 @@
             color: #fff;
         }
         
-        /* Ширина колонок */
         .col-num { width: 40px; text-align: center; }
         .col-dept { width: 140px; }
         .col-loc { width: 120px; }
@@ -313,17 +277,7 @@
         .col-speed { width: 80px; }
         .col-reason { width: 150px; }
         .col-del { width: 40px; text-align: center; }
-<!-- ============================================================
-КОНЕЦ ЧАСТИ 2 из 6
-Продолжение в ЧАСТИ 3...
-============================================================ -->
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ЧАСТЬ 3 из 6: Стили (кнопка удаления, ответственный, модальные окна, адаптив)
-============================================================ -->
         
-        /* === КНОПКА УДАЛЕНИЯ СТРОКИ === */
         .btn-delete-row {
             background: rgba(231, 76, 60, 0.3);
             border: none;
@@ -341,7 +295,6 @@
             color: #fff;
         }
         
-        /* === БЛОК ОТВЕТСТВЕННОГО === */
         .responsible-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -351,7 +304,6 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
-        /* === КНОПКИ ФОРМЫ === */
         .form-buttons {
             display: flex;
             gap: 15px;
@@ -359,7 +311,6 @@
             flex-wrap: wrap;
         }
         
-        /* === МОДАЛЬНОЕ ОКНО === */
         .modal {
             display: none;
             position: fixed;
@@ -413,7 +364,6 @@
             opacity: 1;
         }
         
-        /* === ФИЛЬТРЫ === */
         .filters {
             display: flex;
             gap: 15px;
@@ -448,7 +398,6 @@
             background: #1a1a2e;
         }
         
-        /* === ТАБЛИЦА ИСТОРИИ === */
         .history-table {
             min-width: 1400px;
         }
@@ -464,7 +413,6 @@
             font-size: 13px;
         }
         
-        /* === НАСТРОЙКИ АДМИНА === */
         .settings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -514,17 +462,7 @@
         .settings-item button:hover {
             opacity: 1;
         }
-<!-- ============================================================
-КОНЕЦ ЧАСТИ 3 из 6
-Продолжение в ЧАСТИ 4...
-============================================================ -->
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ЧАСТЬ 4 из 6: Стили (уведомления, адаптив) + HTML структура
-============================================================ -->
         
-        /* === УВЕДОМЛЕНИЯ === */
         .notification {
             position: fixed;
             top: 20px;
@@ -557,7 +495,6 @@
             }
         }
         
-        /* === ЗАГРУЗКА === */
         .loading {
             display: none;
             position: fixed;
@@ -584,7 +521,6 @@
             to { transform: rotate(360deg); }
         }
         
-        /* === АДАПТИВНОСТЬ === */
         @media (max-width: 768px) {
             .main-screen {
                 padding: 15px;
@@ -642,18 +578,15 @@
     </style>
 </head>
 <body>
-    <!-- === ЛОГОТИП === -->
     <div class="logo-container" id="logoContainer" style="display: none;">
         <div class="logo">⚡</div>
         <span class="logo-text">РЕМОНТ ЭД</span>
     </div>
     
-    <!-- === ИНДИКАТОР ЗАГРУЗКИ === -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
     
-    <!-- === ЭКРАН ВХОДА === -->
     <div class="login-screen" id="loginScreen">
         <div class="login-box">
             <h1>⚡ Вход в систему</h1>
@@ -661,52 +594,27 @@
             
             <div class="input-group">
                 <label for="password">Пароль:</label>
-                <input 
-                    type="text" 
-                    id="password" 
-                    placeholder="Введите пароль"
-                    autocomplete="off"
-                >
+                <input type="text" id="password" placeholder="Введите пароль" autocomplete="off">
             </div>
             
             <button class="btn btn-primary" id="loginBtn" onclick="login()">
-                🔓 Войти
+                Войти
             </button>
         </div>
     </div>
     
-    <!-- === ГЛАВНЫЙ ЭКРАН === -->
     <div class="main-screen" id="mainScreen">
         <div class="top-panel">
             <h1>⚡ Заявка на ремонт электродвигателей</h1>
             <div class="top-buttons">
-                <button class="btn btn-secondary" onclick="showHistory()">
-                    📜 История
-                </button>
-                <button class="btn btn-secondary" id="settingsBtn" style="display:none;" onclick="showSettings()">
-                    ⚙️ Настройки
-                </button>
-                <button class="btn btn-secondary" onclick="logout()">
-                    🚪 Выход
-                </button>
+                <button class="btn btn-secondary" onclick="showHistory()">История</button>
+                <button class="btn btn-secondary" id="settingsBtn" style="display:none;" onclick="showSettings()">Настройки</button>
+                <button class="btn btn-secondary" onclick="logout()">Выход</button>
             </div>
         </div>
-<!-- ============================================================
-КОНЕЦ ЧАСТИ 4 из 6
-Продолжение в ЧАСТИ 5...
-============================================================ -->
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ЧАСТЬ 5 из 6: HTML (форма заявки, модальные окна истории и настроек)
-============================================================ -->
         
-        <!-- === ФОРМА ЗАЯВКИ === -->
         <div class="form-section">
-            <h2>
-                📝 Новая заявка
-                <span class="datetime" id="currentDateTime"></span>
-            </h2>
+            <h2>Новая заявка <span class="datetime" id="currentDateTime"></span></h2>
             
             <div class="table-container">
                 <table>
@@ -724,88 +632,57 @@
                             <th class="col-del"></th>
                         </tr>
                     </thead>
-                    <tbody id="itemsTable">
-                        <!-- Строки добавляются через JavaScript -->
-                    </tbody>
+                    <tbody id="itemsTable"></tbody>
                 </table>
             </div>
             
-            <button class="btn btn-secondary btn-small" onclick="addRow()">
-                ➕ Добавить строку
-            </button>
+            <button class="btn btn-secondary btn-small" onclick="addRow()">+ Добавить строку</button>
             
-            <!-- === БЛОК ОТВЕТСТВЕННОГО === -->
             <div class="responsible-section">
                 <div class="input-group">
-                    <label for="responsible">👤 ФИО ответственного:</label>
-                    <input 
-                        type="text" 
-                        id="responsible" 
-                        placeholder="Иванов Иван Иванович"
-                        maxlength="20"
-                    >
+                    <label for="responsible">ФИО ответственного:</label>
+                    <input type="text" id="responsible" placeholder="Иванов Иван Иванович" maxlength="50">
                 </div>
                 <div class="input-group">
-                    <label for="phone">📞 Контактный телефон:</label>
-                    <input 
-                        type="text" 
-                        id="phone" 
-                        placeholder="+7 999 123-45-67"
-                        maxlength="20"
-                    >
+                    <label for="phone">Контактный телефон:</label>
+                    <input type="text" id="phone" placeholder="+7 999 123-45-67" maxlength="20">
                 </div>
             </div>
             
-            <!-- === КНОПКИ ФОРМЫ === -->
             <div class="form-buttons">
-                <button class="btn btn-danger" onclick="clearForm()">
-                    🗑️ Очистить
-                </button>
-                <button class="btn btn-success" onclick="submitForm()">
-                    💾 Сохранить заявку
-                </button>
+                <button class="btn btn-danger" onclick="clearForm()">Очистить</button>
+                <button class="btn btn-success" onclick="submitForm()">Сохранить заявку</button>
             </div>
         </div>
     </div>
     
-    <!-- === МОДАЛЬНОЕ ОКНО: ИСТОРИЯ === -->
     <div class="modal" id="historyModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>📜 История заявок</h2>
+                <h2>История заявок</h2>
                 <button class="modal-close" onclick="closeHistory()">×</button>
             </div>
             
-            <!-- === ФИЛЬТРЫ === -->
             <div class="filters">
                 <div class="filter-group">
                     <label>Подразделение:</label>
-                    <select id="filterDepartment">
-                        <option value="">Все подразделения</option>
-                    </select>
+                    <select id="filterDepartment"><option value="">Все</option></select>
                 </div>
                 <div class="filter-group">
                     <label>Место установки:</label>
-                    <select id="filterLocation">
-                        <option value="">Все места</option>
-                    </select>
+                    <select id="filterLocation"><option value="">Все</option></select>
                 </div>
                 <div class="filter-group">
                     <label>Мощность:</label>
-                    <select id="filterPower">
-                        <option value="">Любая мощность</option>
-                    </select>
+                    <select id="filterPower"><option value="">Любая</option></select>
                 </div>
                 <div class="filter-group">
                     <label>Инв. номер:</label>
                     <input type="text" id="filterInvNumber" placeholder="Поиск..." maxlength="5">
                 </div>
-                <button class="btn btn-primary btn-small" onclick="loadHistory()">
-                    🔍 Показать
-                </button>
+                <button class="btn btn-primary btn-small" onclick="loadHistory()">Показать</button>
             </div>
             
-            <!-- === ТАБЛИЦА ИСТОРИИ === -->
             <div class="table-container">
                 <table class="history-table">
                     <thead>
@@ -824,76 +701,56 @@
                             <th>Телефон</th>
                         </tr>
                     </thead>
-                    <tbody id="historyTable">
-                        <!-- Данные загружаются через JavaScript -->
-                    </tbody>
+                    <tbody id="historyTable"></tbody>
                 </table>
             </div>
         </div>
     </div>
     
-    <!-- === МОДАЛЬНОЕ ОКНО: НАСТРОЙКИ === -->
     <div class="modal" id="settingsModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>⚙️ Настройки</h2>
+                <h2>Настройки</h2>
                 <button class="modal-close" onclick="closeSettings()">×</button>
             </div>
             
             <div class="settings-grid">
-                <!-- Подразделения -->
                 <div class="settings-section">
-                    <h3>📍 Подразделения</h3>
+                    <h3>Подразделения</h3>
                     <div class="settings-list" id="departmentsList"></div>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newDepartment" placeholder="Новое подразделение" maxlength="20" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
-                        <button class="btn btn-success btn-small" onclick="addDepartment()">+ Добавить</button>
+                        <input type="text" id="newDepartment" placeholder="Новое подразделение" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                        <button class="btn btn-success btn-small" onclick="addDepartment()">+</button>
                     </div>
                 </div>
                 
-                <!-- Места установки -->
                 <div class="settings-section">
-                    <h3>🔧 Места установки</h3>
+                    <h3>Места установки</h3>
                     <div class="settings-list" id="locationsList"></div>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newLocation" placeholder="Новое место" maxlength="20" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
-                        <button class="btn btn-success btn-small" onclick="addLocation()">+ Добавить</button>
+                        <input type="text" id="newLocation" placeholder="Новое место" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                        <button class="btn btn-success btn-small" onclick="addLocation()">+</button>
                     </div>
                 </div>
                 
-                <!-- Производители -->
                 <div class="settings-section">
-                    <h3>🏭 Производители</h3>
+                    <h3>Производители</h3>
                     <div class="settings-list" id="manufacturersList"></div>
                     <div style="display: flex; gap: 10px;">
-                        <input type="text" id="newManufacturer" placeholder="Новый производитель" maxlength="20" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
-                        <button class="btn btn-success btn-small" onclick="addManufacturer()">+ Добавить</button>
+                        <input type="text" id="newManufacturer" placeholder="Новый производитель" maxlength="30" style="flex:1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #fff;">
+                        <button class="btn btn-success btn-small" onclick="addManufacturer()">+</button>
                     </div>
                 </div>
             </div>
             
             <div style="margin-top: 20px; text-align: right;">
-                <button class="btn btn-success" onclick="saveSettings()">
-                    💾 Сохранить настройки
-                </button>
+                <button class="btn btn-success" onclick="saveSettings()">Сохранить настройки</button>
             </div>
         </div>
     </div>
-<!-- ============================================================
-КОНЕЦ ЧАСТИ 5 из 6
-Продолжение в ЧАСТИ 6 (финальная - JavaScript)...
-============================================================ -->
-<!-- ============================================================
-ПРОЕКТ: Заявки на ремонт электродвигателей
-ВЕРСИЯ: 2.0
-ЧАСТЬ 6A из 6: JavaScript (переменные, вход, настройки, работа с формой)
-============================================================ -->
-    
     <script>
-        // === НАСТРОЙКИ API ===
-        const API_URL = 'https://script.google.com/macros/s/AKfycbzB-hpFWX0fRQFfyYsHdev7aFwa72L95lUuIoIdZN0TB0FdNFEXE9siWFoGE8igATk5/exec';
+        const API_URL = 'https://script.google.com/macros/s/AKfycbyde0mkfkX-38BbhVGgNgCy6iEzCUesRT8VK7vED_uoZVdi4Z-3GfHEBjAT1eFoqXu4/exec';
         
-        // === ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ===
         let currentPassword = '';
         let isAdmin = false;
         let settings = {
@@ -904,38 +761,23 @@
             manufacturers: []
         };
         
-        // Максимальная длина текстовых полей
-        const MAX_LENGTH = 20;
+        const MAX_LENGTH = 30;
         const INV_LENGTH = 5;
         
-        // === ИНИЦИАЛИЗАЦИЯ ===
         document.addEventListener('DOMContentLoaded', function() {
-            // Обработка Enter в поле пароля
             document.getElementById('password').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    login();
-                }
+                if (e.key === 'Enter') login();
             });
-            
             updateDateTime();
             setInterval(updateDateTime, 60000);
         });
         
-        // === ОБНОВЛЕНИЕ ДАТЫ/ВРЕМЕНИ ===
         function updateDateTime() {
             const now = new Date();
-            const options = { 
-                day: '2-digit', 
-                month: '2-digit', 
-                year: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            document.getElementById('currentDateTime').textContent = 
-                now.toLocaleDateString('ru-RU', options);
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('ru-RU', options);
         }
         
-        // === ПОКАЗАТЬ/СКРЫТЬ ЗАГРУЗКУ ===
         function showLoading() {
             document.getElementById('loading').style.display = 'flex';
         }
@@ -944,20 +786,18 @@
             document.getElementById('loading').style.display = 'none';
         }
         
-        // === ПОКАЗАТЬ УВЕДОМЛЕНИЕ ===
-        function showNotification(message, type = 'success') {
+        function showNotification(message, type) {
             const existing = document.querySelector('.notification');
             if (existing) existing.remove();
             
             const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
+            notification.className = 'notification ' + type;
             notification.textContent = message;
             document.body.appendChild(notification);
             
-            setTimeout(() => notification.remove(), 4000);
+            setTimeout(function() { notification.remove(); }, 4000);
         }
         
-        // === ВХОД В СИСТЕМУ ===
         async function login() {
             const password = document.getElementById('password').value.trim();
             
@@ -969,10 +809,8 @@
             showLoading();
             
             try {
-                // Запрос настроек с проверкой пароля на сервере
-                const response = await fetch(
-                    `${API_URL}?action=getSettings&password=${encodeURIComponent(password)}`
-                );
+                const url = API_URL + '?action=getSettings&password=' + encodeURIComponent(password);
+                const response = await fetch(url);
                 const result = await response.json();
                 
                 if (!result.success) {
@@ -981,7 +819,6 @@
                     return;
                 }
                 
-                // Сохраняем данные
                 currentPassword = password;
                 isAdmin = result.isAdmin || false;
                 settings = {
@@ -992,19 +829,15 @@
                     manufacturers: result.manufacturers || []
                 };
                 
-                // Показываем главный экран
                 document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('mainScreen').style.display = 'block';
                 document.getElementById('logoContainer').style.display = 'flex';
                 
-                // Показываем кнопку настроек для админа
                 if (isAdmin) {
                     document.getElementById('settingsBtn').style.display = 'inline-flex';
                 }
                 
-                // Инициализируем форму
                 initForm();
-                
                 hideLoading();
                 showNotification('Добро пожаловать!', 'success');
                 
@@ -1014,7 +847,6 @@
             }
         }
         
-        // === ВЫХОД ===
         function logout() {
             currentPassword = '';
             isAdmin = false;
@@ -1025,7 +857,6 @@
             document.getElementById('password').value = '';
         }
         
-        // === ИНИЦИАЛИЗАЦИЯ ФОРМЫ ===
         function initForm() {
             document.getElementById('itemsTable').innerHTML = '';
             addRow();
@@ -1033,68 +864,34 @@
             document.getElementById('phone').value = '';
         }
         
-        // === СОЗДАНИЕ ВЫПАДАЮЩЕГО СПИСКА ===
-        function createSelect(options, placeholder, className = '') {
-            let html = `<select class="${className}">`;
-            html += `<option value="">${placeholder}</option>`;
-            options.forEach(opt => {
-                html += `<option value="${opt}">${opt}</option>`;
-            });
+        function createSelect(options, placeholder) {
+            let html = '<select><option value="">' + placeholder + '</option>';
+            for (let i = 0; i < options.length; i++) {
+                html += '<option value="' + options[i] + '">' + options[i] + '</option>';
+            }
             html += '</select>';
             return html;
         }
         
-        // === ДОБАВЛЕНИЕ СТРОКИ ===
         function addRow() {
             const tbody = document.getElementById('itemsTable');
             const rowNum = tbody.children.length + 1;
             
             const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="col-num">${rowNum}</td>
-                <td class="col-dept">
-                    ${createSelect(settings.departments, 'Выберите...')}
-                </td>
-                <td class="col-loc">
-                    ${createSelect(settings.locations, 'Выберите...')}
-                </td>
-                <td class="col-motor">
-                    <input type="text" placeholder="Марка" maxlength="${MAX_LENGTH}">
-                </td>
-                <td class="col-inv">
-                    <input type="text" placeholder="00000" maxlength="${INV_LENGTH}" 
-                           style="text-transform: uppercase;"
-                           oninput="this.value = this.value.toUpperCase().replace(/[^A-ZА-Я0-9]/g, '')">
-                </td>
-                <td class="col-manuf">
-                    ${createSelect(settings.manufacturers, 'Выберите...')}
-                </td>
-                <td class="col-power">
-                    ${createSelect(settings.powers, 'кВт')}
-                </td>
-                <td class="col-speed">
-                    ${createSelect(settings.speeds, 'Об/мин')}
-                </td>
-                <td class="col-reason">
-                    <input type="text" placeholder="Причина" maxlength="${MAX_LENGTH}">
-                </td>
-                <td class="col-del">
-                    <button class="btn-delete-row" onclick="deleteRow(this)" title="Удалить строку">✕</button>
-                </td>
-            `;
+            tr.innerHTML = 
+                '<td class="col-num">' + rowNum + '</td>' +
+                '<td class="col-dept">' + createSelect(settings.departments, 'Выберите...') + '</td>' +
+                '<td class="col-loc">' + createSelect(settings.locations, 'Выберите...') + '</td>' +
+                '<td class="col-motor"><input type="text" placeholder="Марка" maxlength="' + MAX_LENGTH + '"></td>' +
+                '<td class="col-inv"><input type="text" placeholder="00000" maxlength="' + INV_LENGTH + '" style="text-transform: uppercase;" oninput="this.value = this.value.toUpperCase().replace(/[^A-ZА-Я0-9]/g, \'\')"></td>' +
+                '<td class="col-manuf">' + createSelect(settings.manufacturers, 'Выберите...') + '</td>' +
+                '<td class="col-power">' + createSelect(settings.powers, 'кВт') + '</td>' +
+                '<td class="col-speed">' + createSelect(settings.speeds, 'Об/мин') + '</td>' +
+                '<td class="col-reason"><input type="text" placeholder="Причина" maxlength="' + MAX_LENGTH + '"></td>' +
+                '<td class="col-del"><button class="btn-delete-row" onclick="deleteRow(this)" title="Удалить">×</button></td>';
             tbody.appendChild(tr);
         }
-//<!-- ============================================================
-//КОНЕЦ ЧАСТИ 6A из 6
-//Продолжение в ЧАСТИ 6B (финал)...
-//============================================================ -->
-//<!-- ============================================================
-//ПРОЕКТ: Заявки на ремонт электродвигателей
-//ВЕРСИЯ: 2.0
-//ЧАСТЬ 6B из 6 (ФИНАЛ): JavaScript (удаление, отправка, история, настройки)
-//============================================================ -->
         
-        // === УДАЛЕНИЕ СТРОКИ ===
         function deleteRow(btn) {
             const tbody = document.getElementById('itemsTable');
             if (tbody.children.length <= 1) {
@@ -1105,15 +902,13 @@
             renumberRows();
         }
         
-        // === ПЕРЕНУМЕРАЦИЯ СТРОК ===
         function renumberRows() {
             const rows = document.querySelectorAll('#itemsTable tr');
-            rows.forEach((row, index) => {
-                row.cells[0].textContent = index + 1;
-            });
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].cells[0].textContent = i + 1;
+            }
         }
         
-        // === ОЧИСТКА ФОРМЫ ===
         function clearForm() {
             if (confirm('Очистить все поля формы?')) {
                 initForm();
@@ -1121,9 +916,7 @@
             }
         }
         
-        // === ОТПРАВКА ЗАЯВКИ ===
         async function submitForm() {
-            // Валидация ФИО и телефона
             const responsible = document.getElementById('responsible').value.trim();
             const phone = document.getElementById('phone').value.trim();
             
@@ -1137,7 +930,6 @@
                 return;
             }
             
-            // Сбор данных из таблицы
             const rows = document.querySelectorAll('#itemsTable tr');
             const items = [];
             
@@ -1146,8 +938,6 @@
                 const cells = row.cells;
                 
                 const motor = cells[3].querySelector('input').value.trim();
-                
-                // Пропускаем пустые строки
                 if (!motor) continue;
                 
                 const department = cells[1].querySelector('select').value;
@@ -1158,37 +948,36 @@
                 const speed = cells[7].querySelector('select').value;
                 const reason = cells[8].querySelector('input').value.trim();
                 
-                // Валидация обязательных полей
                 if (!department) {
-                    showNotification(`Строка ${i + 1}: выберите подразделение`, 'error');
+                    showNotification('Строка ' + (i + 1) + ': выберите подразделение', 'error');
                     return;
                 }
                 if (!location) {
-                    showNotification(`Строка ${i + 1}: выберите место установки`, 'error');
+                    showNotification('Строка ' + (i + 1) + ': выберите место установки', 'error');
                     return;
                 }
                 if (!manufacturer) {
-                    showNotification(`Строка ${i + 1}: выберите производителя`, 'error');
+                    showNotification('Строка ' + (i + 1) + ': выберите производителя', 'error');
                     return;
                 }
                 if (!power) {
-                    showNotification(`Строка ${i + 1}: выберите мощность`, 'error');
+                    showNotification('Строка ' + (i + 1) + ': выберите мощность', 'error');
                     return;
                 }
                 if (!speed) {
-                    showNotification(`Строка ${i + 1}: выберите обороты`, 'error');
+                    showNotification('Строка ' + (i + 1) + ': выберите обороты', 'error');
                     return;
                 }
                 
                 items.push({
-                    department,
-                    location,
-                    motor,
-                    invNumber,
-                    manufacturer,
-                    power,
-                    speed,
-                    reason
+                    department: department,
+                    location: location,
+                    motor: motor,
+                    invNumber: invNumber,
+                    manufacturer: manufacturer,
+                    power: power,
+                    speed: speed,
+                    reason: reason
                 });
             }
             
@@ -1200,24 +989,20 @@
             showLoading();
             
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'submit',
-                        password: currentPassword,
-                        responsible,
-                        phone,
-                        items
-                    })
-                });
+                const postData = {
+                    action: 'submit',
+                    password: currentPassword,
+                    responsible: responsible,
+                    phone: phone,
+                    items: items
+                };
                 
-                const result = await response.json();
+                const result = await sendData(postData);
                 
                 hideLoading();
                 
                 if (result.success) {
-                    showNotification(`✓ Заявка ${result.applicationNumber} сохранена! Записей: ${result.count}`, 'success');
+                    showNotification('Заявка ' + result.applicationNumber + ' сохранена! Записей: ' + result.count, 'success');
                     initForm();
                 } else {
                     showNotification(result.error || 'Ошибка сохранения', 'error');
@@ -1229,33 +1014,63 @@
             }
         }
         
-        // === ИСТОРИЯ: ПОКАЗАТЬ ===
+        function sendData(data) {
+            return new Promise(function(resolve, reject) {
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = API_URL;
+                form.target = 'hidden_iframe';
+                form.style.display = 'none';
+                
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'data';
+                input.value = JSON.stringify(data);
+                form.appendChild(input);
+                
+                let iframe = document.getElementById('hidden_iframe');
+                if (!iframe) {
+                    iframe = document.createElement('iframe');
+                    iframe.name = 'hidden_iframe';
+                    iframe.id = 'hidden_iframe';
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+                }
+                
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+                
+                setTimeout(function() {
+                    resolve({ 
+                        success: true, 
+                        applicationNumber: 'Отправлено',
+                        count: data.items.length
+                    });
+                }, 3000);
+            });
+        }
+        
         function showHistory() {
             document.getElementById('historyModal').style.display = 'flex';
-            
-            // Заполняем фильтры
-            fillFilterSelect('filterDepartment', settings.departments, 'Все подразделения');
-            fillFilterSelect('filterLocation', settings.locations, 'Все места');
-            fillFilterSelect('filterPower', settings.powers, 'Любая мощность');
-            
+            fillFilterSelect('filterDepartment', settings.departments, 'Все');
+            fillFilterSelect('filterLocation', settings.locations, 'Все');
+            fillFilterSelect('filterPower', settings.powers, 'Любая');
             loadHistory();
         }
         
-        // === ИСТОРИЯ: ЗАКРЫТЬ ===
         function closeHistory() {
             document.getElementById('historyModal').style.display = 'none';
         }
         
-        // === ЗАПОЛНЕНИЕ ФИЛЬТРА ===
         function fillFilterSelect(id, options, placeholder) {
             const select = document.getElementById(id);
-            select.innerHTML = `<option value="">${placeholder}</option>`;
-            options.forEach(opt => {
-                select.innerHTML += `<option value="${opt}">${opt}</option>`;
-            });
+            select.innerHTML = '<option value="">' + placeholder + '</option>';
+            for (let i = 0; i < options.length; i++) {
+                select.innerHTML += '<option value="' + options[i] + '">' + options[i] + '</option>';
+            }
         }
         
-        // === ИСТОРИЯ: ЗАГРУЗКА ДАННЫХ ===
         async function loadHistory() {
             const department = document.getElementById('filterDepartment').value;
             const location = document.getElementById('filterLocation').value;
@@ -1265,11 +1080,11 @@
             showLoading();
             
             try {
-                let url = `${API_URL}?action=getHistory&password=${encodeURIComponent(currentPassword)}`;
-                if (department) url += `&department=${encodeURIComponent(department)}`;
-                if (location) url += `&location=${encodeURIComponent(location)}`;
-                if (power) url += `&power=${encodeURIComponent(power)}`;
-                if (invNumber) url += `&invNumber=${encodeURIComponent(invNumber)}`;
+                let url = API_URL + '?action=getHistory&password=' + encodeURIComponent(currentPassword);
+                if (department) url += '&department=' + encodeURIComponent(department);
+                if (location) url += '&location=' + encodeURIComponent(location);
+                if (power) url += '&power=' + encodeURIComponent(power);
+                if (invNumber) url += '&invNumber=' + encodeURIComponent(invNumber);
                 
                 const response = await fetch(url);
                 const result = await response.json();
@@ -1288,7 +1103,6 @@
             }
         }
         
-        // === ИСТОРИЯ: ОТРИСОВКА ТАБЛИЦЫ ===
         function renderHistory(data) {
             const tbody = document.getElementById('historyTable');
             
@@ -1297,25 +1111,27 @@
                 return;
             }
             
-            tbody.innerHTML = data.map(row => `
-                <tr>
-                    <td>${row.number || ''}</td>
-                    <td>${row.date || ''}</td>
-                    <td>${row.department || ''}</td>
-                    <td>${row.location || ''}</td>
-                    <td>${row.motor || ''}</td>
-                    <td>${row.invNumber || ''}</td>
-                    <td>${row.manufacturer || ''}</td>
-                    <td>${row.power || ''}</td>
-                    <td>${row.speed || ''}</td>
-                    <td>${row.reason || ''}</td>
-                    <td>${row.responsible || ''}</td>
-                    <td>${row.phone || ''}</td>
-                </tr>
-            `).join('');
+            let html = '';
+            for (let i = 0; i < data.length; i++) {
+                const row = data[i];
+                html += '<tr>' +
+                    '<td>' + (row.number || '') + '</td>' +
+                    '<td>' + (row.date || '') + '</td>' +
+                    '<td>' + (row.department || '') + '</td>' +
+                    '<td>' + (row.location || '') + '</td>' +
+                    '<td>' + (row.motor || '') + '</td>' +
+                    '<td>' + (row.invNumber || '') + '</td>' +
+                    '<td>' + (row.manufacturer || '') + '</td>' +
+                    '<td>' + (row.power || '') + '</td>' +
+                    '<td>' + (row.speed || '') + '</td>' +
+                    '<td>' + (row.reason || '') + '</td>' +
+                    '<td>' + (row.responsible || '') + '</td>' +
+                    '<td>' + (row.phone || '') + '</td>' +
+                    '</tr>';
+            }
+            tbody.innerHTML = html;
         }
         
-        // === НАСТРОЙКИ: ПОКАЗАТЬ ===
         function showSettings() {
             document.getElementById('settingsModal').style.display = 'flex';
             renderSettingsList('departmentsList', settings.departments);
@@ -1323,41 +1139,36 @@
             renderSettingsList('manufacturersList', settings.manufacturers);
         }
         
-        // === НАСТРОЙКИ: ЗАКРЫТЬ ===
         function closeSettings() {
             document.getElementById('settingsModal').style.display = 'none';
         }
         
-        // === НАСТРОЙКИ: ОТРИСОВКА СПИСКА ===
         function renderSettingsList(containerId, items) {
             const container = document.getElementById(containerId);
-            container.innerHTML = items.map(item => `
-                <div class="settings-item">
-                    <span>${item}</span>
-                    <button onclick="removeSettingsItem('${containerId}', '${item}')">✕</button>
-                </div>
-            `).join('');
+            let html = '';
+            for (let i = 0; i < items.length; i++) {
+                html += '<div class="settings-item"><span>' + items[i] + '</span><button onclick="removeSettingsItem(\'' + containerId + '\', \'' + items[i].replace(/'/g, "\\'") + '\')">×</button></div>';
+            }
+            container.innerHTML = html;
         }
         
-        // === НАСТРОЙКИ: УДАЛЕНИЕ ЭЛЕМЕНТА ===
         function removeSettingsItem(containerId, item) {
             if (containerId === 'departmentsList') {
-                settings.departments = settings.departments.filter(d => d !== item);
+                settings.departments = settings.departments.filter(function(d) { return d !== item; });
                 renderSettingsList(containerId, settings.departments);
             } else if (containerId === 'locationsList') {
-                settings.locations = settings.locations.filter(l => l !== item);
+                settings.locations = settings.locations.filter(function(l) { return l !== item; });
                 renderSettingsList(containerId, settings.locations);
             } else if (containerId === 'manufacturersList') {
-                settings.manufacturers = settings.manufacturers.filter(m => m !== item);
+                settings.manufacturers = settings.manufacturers.filter(function(m) { return m !== item; });
                 renderSettingsList(containerId, settings.manufacturers);
             }
         }
         
-        // === НАСТРОЙКИ: ДОБАВЛЕНИЕ ===
         function addDepartment() {
             const input = document.getElementById('newDepartment');
             const value = input.value.trim().substring(0, MAX_LENGTH);
-            if (value && !settings.departments.includes(value)) {
+            if (value && settings.departments.indexOf(value) === -1) {
                 settings.departments.push(value);
                 renderSettingsList('departmentsList', settings.departments);
                 input.value = '';
@@ -1367,7 +1178,7 @@
         function addLocation() {
             const input = document.getElementById('newLocation');
             const value = input.value.trim().substring(0, MAX_LENGTH);
-            if (value && !settings.locations.includes(value)) {
+            if (value && settings.locations.indexOf(value) === -1) {
                 settings.locations.push(value);
                 renderSettingsList('locationsList', settings.locations);
                 input.value = '';
@@ -1377,49 +1188,33 @@
         function addManufacturer() {
             const input = document.getElementById('newManufacturer');
             const value = input.value.trim().substring(0, MAX_LENGTH);
-            if (value && !settings.manufacturers.includes(value)) {
+            if (value && settings.manufacturers.indexOf(value) === -1) {
                 settings.manufacturers.push(value);
                 renderSettingsList('manufacturersList', settings.manufacturers);
                 input.value = '';
             }
         }
         
-        // === НАСТРОЙКИ: СОХРАНЕНИЕ ===
-        async function saveSettings() {
+        asyncSettings() {
             showLoading();
             
             try {
-                // Сохраняем подразделения
-                await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'updateDepartments',
-                        password: currentPassword,
-                        items: settings.departments
-                    })
+                await sendData({
+                    action: 'updateDepartments',
+                    password: currentPassword,
+                    items: settings.departments
                 });
                 
-                // Сохраняем места
-                await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'updateLocations',
-                        password: currentPassword,
-                        items: settings.locations
-                    })
+                await sendData({
+                    action: 'updateLocations',
+                    password: currentPassword,
+                    items: settings.locations
                 });
                 
-                // Сохраняем производителей
-                await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        action: 'updateManufacturers',
-                        password: currentPassword,
-                        items: settings.manufacturers
-                    })
+                await sendData({
+                    action: 'updateManufacturers',
+                    password: currentPassword,
+                    items: settings.manufacturers
                 });
                 
                 hideLoading();
@@ -1434,17 +1229,3 @@
     </script>
 </body>
 </html>
-<!-- ============================================================
-КОНЕЦ ФАЙЛА INDEX.HTML
-ВЕРСИЯ: 2.0
-ВСЕГО СТРОК: ~420
-
-ИЗМЕНЕНИЯ v2.0:
-✅ Безопасность: проверка пароля на сервере
-✅ Кнопка "Войти" видна
-✅ Поле "Инвентарный номер" (5 знаков) + фильтр
-✅ Поле "Производитель" (выпадающий список)
-✅ Логотип в левом углу
-✅ Валидация: ограничение 20 символов
-✅ Email-уведомления (настраиваются в скрипте)
-============================================================ -->
