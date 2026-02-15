@@ -1,7 +1,7 @@
 <!-- ============================================================
+     ФАЙЛ: index.html
      ЧАСТЬ 1 из 3: DOCTYPE, HEAD, CSS-СТИЛИ
-     Содержит: структуру документа, метатеги, все стили оформления
-     Строки: 1-280
+     Содержит: структуру документа, метатеги, все стили
      ============================================================ -->
 <!DOCTYPE html>
 <html lang="ru">
@@ -23,7 +23,6 @@
             color: #fff;
         }
         
-        /* Логотип */
         .logo-container {
             position: fixed;
             top: 15px;
@@ -52,7 +51,6 @@
             color: #f39c12;
         }
         
-        /* Экран входа */
         .login-screen {
             display: flex;
             justify-content: center;
@@ -114,7 +112,6 @@
             color: #888;
         }
         
-        /* Кнопки */
         .btn {
             padding: 12px 24px;
             border: none;
@@ -170,15 +167,14 @@
             gap: 6px;
         }
         
-        /* Главный экран */
         .main-screen {
-    display: none;
-    padding: 20px;
-    padding-left: 80px;
-    padding-top: 80px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
+            display: none;
+            padding: 20px;
+            padding-left: 80px;
+            padding-top: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
         
         .header {
             display: flex;
@@ -201,7 +197,6 @@
             gap: 10px;
         }
         
-        /* Форма */
         .form-section {
             background: rgba(255,255,255,0.08);
             backdrop-filter: blur(10px);
@@ -225,7 +220,6 @@
             margin-left: auto;
         }
         
-        /* Таблица */
         .table-container {
             overflow-x: auto;
             margin-bottom: 20px;
@@ -299,7 +293,6 @@
             color: #fff;
         }
         
-        /* Блок ответственного */
         .responsible-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -315,7 +308,6 @@
             margin-top: 20px;
         }
         
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -367,7 +359,6 @@
             opacity: 1;
         }
         
-        /* Фильтры */
         .filters {
             display: flex;
             gap: 15px;
@@ -402,7 +393,6 @@
             background: #1a1a2e;
         }
         
-        /* Настройки */
         .settings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -447,7 +437,6 @@
             font-size: 16px;
         }
         
-        /* Уведомления */
         .notification {
             position: fixed;
             top: 20px;
@@ -478,7 +467,6 @@
             to { transform: translateX(0); opacity: 1; }
         }
         
-        /* Загрузка */
         .loading {
             display: none;
             position: fixed;
@@ -505,32 +493,26 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Адаптив */
         @media (max-width: 768px) {
             .main-screen {
                 padding: 15px;
                 padding-top: 70px;
             }
-            
             .logo-container {
                 top: 10px;
                 left: 10px;
             }
-            
             .logo {
                 width: 40px;
                 height: 40px;
             }
-            
             .logo-text {
                 display: none;
             }
-            
             .header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
             .header h1 {
                 font-size: 18px;
             }
@@ -542,18 +524,17 @@
      Следующая часть: HTML-разметка (body)
      ============================================================ -->
 <!-- ============================================================
+     ФАЙЛ: index.html
      ЧАСТЬ 2 из 3: HTML-РАЗМЕТКА (BODY)
      Содержит: логотип, экран входа, главный экран, модальные окна
-     Строки: 281-460
+     Новое: поля "Дата с" и "Дата по" в фильтрах истории
      ============================================================ -->
 <body>
-    <!-- Логотип в углу -->
     <div class="logo-container" id="logoContainer">
         <div class="logo">⚡</div>
         <span class="logo-text">РЕМОНТ ЭД</span>
     </div>
     
-    <!-- Индикатор загрузки -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
     </div>
@@ -653,6 +634,14 @@
                     <label>Инв. номер:</label>
                     <input type="text" id="filterInvNumber" placeholder="Поиск..." maxlength="5">
                 </div>
+                <div class="filter-group">
+                    <label>Дата с:</label>
+                    <input type="date" id="filterDateFrom">
+                </div>
+                <div class="filter-group">
+                    <label>Дата по:</label>
+                    <input type="date" id="filterDateTo">
+                </div>
                 <button class="btn btn-primary btn-small" onclick="loadHistory()">🔍 Найти</button>
             </div>
             
@@ -725,13 +714,15 @@
 <!-- ============================================================
      КОНЕЦ ЧАСТИ 2 из 3
      Следующая часть: JavaScript (весь функционал)
-     ВАЖНО: Тег </body> и </html> будут в конце Части 3
+     ВАЖНО: Теги </body> и </html> будут в конце Части 3
      ============================================================ -->
 <!-- ============================================================
+     ФАЙЛ: index.html
      ЧАСТЬ 3 из 3: JAVASCRIPT (ВЕСЬ ФУНКЦИОНАЛ)
-     Содержит: настройки, буфер данных, авторизация, формы,
-               история, печать, настройки справочников
-     Строки: 461-850
+     Содержит: буфер данных, авторизация, формы, отправка,
+               история с лимитом и фильтром по датам,
+               печать, настройки справочников
+     Новое: formatUserTime, лимит 20 записей, фильтр по датам
      ============================================================ -->
 <script>
     // ============================================================
@@ -758,10 +749,6 @@
     // БЛОК 2: СИСТЕМА БУФЕРА ДАННЫХ (sessionStorage + таймер 24ч)
     // ============================================================
     
-    /**
-     * Сохраняет данные формы в буфер перед отправкой
-     * Буфер живёт до закрытия браузера ИЛИ 24 часа (что раньше)
-     */
     function saveToBuffer() {
         try {
             var formData = collectFormData();
@@ -782,10 +769,6 @@
         }
     }
     
-    /**
-     * Собирает данные из формы (без валидации обязательных полей)
-     * Возвращает объект с данными или null если форма пуста
-     */
     function collectFormData() {
         var responsible = document.getElementById('responsible').value.trim();
         var phone = document.getElementById('phone').value.trim();
@@ -808,7 +791,6 @@
             items.push(item);
         }
         
-        // Проверяем, есть ли хоть какие-то данные
         var hasData = responsible || phone || items.some(function(item) {
             return item.motor || item.department || item.location;
         });
@@ -822,10 +804,6 @@
         };
     }
     
-    /**
-     * Проверяет наличие данных в буфере и их актуальность
-     * Возвращает данные или null
-     */
     function getBufferData() {
         try {
             var stored = sessionStorage.getItem('pendingRequest');
@@ -833,7 +811,6 @@
             
             var bufferData = JSON.parse(stored);
             
-            // Проверяем срок годности (24 часа)
             var savedTime = new Date(bufferData.timestamp).getTime();
             var now = new Date().getTime();
             var hoursPassed = (now - savedTime) / (1000 * 60 * 60);
@@ -850,9 +827,6 @@
         }
     }
     
-    /**
-     * Очищает буфер данных
-     */
     function clearBuffer() {
         try {
             sessionStorage.removeItem('pendingRequest');
@@ -861,15 +835,11 @@
         }
     }
     
-    /**
-     * Проверяет буфер при входе и предлагает восстановить данные
-     */
     function checkAndRestoreBuffer() {
         var bufferData = getBufferData();
         
         if (!bufferData) return;
         
-        // Проверяем, есть ли реальные данные для восстановления
         var hasItems = bufferData.items && bufferData.items.some(function(item) {
             return item.motor || item.department;
         });
@@ -880,7 +850,6 @@
             return;
         }
         
-        // Формируем время сохранения для отображения
         var savedTime = new Date(bufferData.timestamp);
         var timeStr = savedTime.toLocaleString('ru-RU');
         
@@ -897,20 +866,14 @@
         }
     }
     
-    /**
-     * Восстанавливает данные из буфера в форму
-     */
     function restoreFromBuffer(bufferData) {
-        // Очищаем текущую таблицу
         document.getElementById('itemsTable').innerHTML = '';
         
-        // Восстанавливаем строки
         if (bufferData.items && bufferData.items.length > 0) {
             for (var i = 0; i < bufferData.items.length; i++) {
                 addRow();
             }
             
-            // Заполняем данные
             var rows = document.querySelectorAll('#itemsTable tr');
             for (var i = 0; i < rows.length && i < bufferData.items.length; i++) {
                 var cells = rows[i].cells;
@@ -929,7 +892,6 @@
             addRow();
         }
         
-        // Восстанавливаем ответственного
         document.getElementById('responsible').value = bufferData.responsible || '';
         document.getElementById('phone').value = bufferData.phone || '';
     }
@@ -963,6 +925,16 @@
         var d = (dateInput instanceof Date) ? dateInput : new Date(dateInput);
         if (isNaN(d.getTime())) return dateInput || '';
         return bangkokFormatter.format(d);
+    }
+    
+    function formatUserTime() {
+        var now = new Date();
+        var day = String(now.getDate()).padStart(2, '0');
+        var month = String(now.getMonth() + 1).padStart(2, '0');
+        var year = now.getFullYear();
+        var hours = String(now.getHours()).padStart(2, '0');
+        var minutes = String(now.getMinutes()).padStart(2, '0');
+        return day + '.' + month + '.' + year + ' ' + hours + ':' + minutes;
     }
     
     function updateDateTime() {
@@ -1051,8 +1023,6 @@
                 }
                 
                 initForm();
-                
-                // Проверяем буфер ПОСЛЕ инициализации формы
                 checkAndRestoreBuffer();
                 
                 showNotification('Добро пожаловать!', 'success');
@@ -1138,7 +1108,7 @@
     }
 
     // ============================================================
-    // БЛОК 8: ОТПРАВКА ЗАЯВКИ (С СОХРАНЕНИЕМ В БУФЕР)
+    // БЛОК 8: ОТПРАВКА ЗАЯВКИ (С БУФЕРОМ И ВРЕМЕНЕМ ПОЛЬЗОВАТЕЛЯ)
     // ============================================================
     
     function submitForm() {
@@ -1195,15 +1165,14 @@
             return;
         }
         
-        // СОХРАНЯЕМ В БУФЕР ПЕРЕД ОТПРАВКОЙ
         saveToBuffer();
-        
         showLoading();
         
         var data = {
             responsible: responsible,
             phone: phone,
-            items: items
+            items: items,
+            userTimeFormatted: formatUserTime()
         };
         
         var url = API_URL + '?action=submit&password=' + encodeURIComponent(currentPassword) + '&data=' + encodeURIComponent(JSON.stringify(data));
@@ -1213,24 +1182,21 @@
             .then(function(result) {
                 hideLoading();
                 if (result.success) {
-                    // УСПЕХ: очищаем буфер и форму
                     clearBuffer();
                     showNotification('✓ Заявка ' + result.applicationNumber + ' сохранена! Записей: ' + result.count, 'success');
                     initForm();
                 } else {
-                    // ОШИБКА СЕРВЕРА: буфер сохранён, форма НЕ очищается
                     showNotification('Ошибка: ' + (result.error || 'Неизвестная ошибка'), 'error');
                 }
             })
             .catch(function(error) {
                 hideLoading();
-                // ОШИБКА СЕТИ/ТАЙМАУТ: буфер сохранён, форма НЕ очищается
                 showNotification('⚠ Нет ответа сервера. Проверьте Историю. Данные сохранены.', 'warning');
             });
     }
 
     // ============================================================
-    // БЛОК 9: ИСТОРИЯ ЗАЯВОК
+    // БЛОК 9: ИСТОРИЯ ЗАЯВОК (С ЛИМИТОМ 20 И ФИЛЬТРОМ ПО ДАТАМ)
     // ============================================================
     
     function showHistory() {
@@ -1238,6 +1204,9 @@
         fillFilter('filterDepartment', settings.departments, 'Все');
         fillFilter('filterLocation', settings.locations, 'Все');
         fillFilter('filterPower', settings.powers, 'Любая');
+        document.getElementById('filterInvNumber').value = '';
+        document.getElementById('filterDateFrom').value = '';
+        document.getElementById('filterDateTo').value = '';
         loadHistory();
     }
     
@@ -1258,6 +1227,8 @@
         var location = document.getElementById('filterLocation').value;
         var power = document.getElementById('filterPower').value;
         var invNumber = document.getElementById('filterInvNumber').value.trim();
+        var dateFrom = document.getElementById('filterDateFrom').value;
+        var dateTo = document.getElementById('filterDateTo').value;
         
         showLoading();
         
@@ -1266,6 +1237,12 @@
         if (location) url += '&location=' + encodeURIComponent(location);
         if (power) url += '&power=' + encodeURIComponent(power);
         if (invNumber) url += '&invNumber=' + encodeURIComponent(invNumber);
+        if (dateFrom) url += '&dateFrom=' + encodeURIComponent(dateFrom);
+        if (dateTo) url += '&dateTo=' + encodeURIComponent(dateTo);
+        
+        if (!dateFrom && !dateTo) {
+            url += '&limit=20';
+        }
         
         fetch(url)
             .then(function(response) { return response.json(); })
@@ -1294,7 +1271,7 @@
         var html = '';
         for (var i = 0; i < data.length; i++) {
             var r = data[i];
-            var dateFormatted = r.date ? formatToBangkok(r.date) : '';
+            var dateFormatted = r.date || '';
             html += '<tr>' +
                 '<td>' + (r.number || '') + '</td>' +
                 '<td>' + dateFormatted + '</td>' +
@@ -1322,13 +1299,17 @@
         var location = document.getElementById('filterLocation').value;
         var power = document.getElementById('filterPower').value;
         var invNumber = document.getElementById('filterInvNumber').value.trim();
+        var dateFrom = document.getElementById('filterDateFrom').value;
+        var dateTo = document.getElementById('filterDateTo').value;
 
         var filtersHtml = '<div style="margin-bottom:12px; font-size:14px;">';
         if (department) filtersHtml += '<strong>Подразделение:</strong> ' + escapeHtml(department) + ' &nbsp; ';
         if (location) filtersHtml += '<strong>Место:</strong> ' + escapeHtml(location) + ' &nbsp; ';
         if (power) filtersHtml += '<strong>Мощность:</strong> ' + escapeHtml(power) + ' &nbsp; ';
         if (invNumber) filtersHtml += '<strong>Инв. №:</strong> ' + escapeHtml(invNumber) + ' &nbsp; ';
-        if (filtersHtml === '<div style="margin-bottom:12px; font-size:14px;">') filtersHtml += '<em>Фильтры: все</em>';
+        if (dateFrom) filtersHtml += '<strong>С:</strong> ' + escapeHtml(dateFrom) + ' &nbsp; ';
+        if (dateTo) filtersHtml += '<strong>По:</strong> ' + escapeHtml(dateTo) + ' &nbsp; ';
+        if (filtersHtml === '<div style="margin-bottom:12px; font-size:14px;">') filtersHtml += '<em>Последние 20 записей</em>';
         filtersHtml += '</div>';
 
         var table = document.querySelector('#historyModal .table-container table');
@@ -1339,7 +1320,7 @@
 
         var tableHtml = table.outerHTML;
         var title = 'История заявок';
-        var generatedAt = formatToBangkok(new Date());
+        var generatedAt = formatUserTime();
         
         var printStyles = 'body{font-family:Arial,sans-serif;color:#000;background:#fff;padding:20px;}' +
             'h1{font-size:18px;margin-bottom:6px;}' +
@@ -1467,12 +1448,4 @@
         var url2 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=locations&items=' + encodeURIComponent(JSON.stringify(settings.locations));
         fetch(url2).then(checkDone).catch(checkDone);
         
-        var url3 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=manufacturers&items=' + encodeURIComponent(JSON.stringify(settings.manufacturers));
-        fetch(url3).then(checkDone).catch(checkDone);
-    }
-</script>
-<!-- ============================================================
-     КОНЕЦ ЧАСТИ 3 из 3
-     ============================================================ -->
-</body>
-</html>
+        var url3 = API_URL + '?action=updateList&password=' + encodeURIComponent(currentPassword) + '&listType=manufacturers&items=' + encodeURIComponent(JSON.stringify(settings.
